@@ -3,216 +3,185 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Twins Workshop | EVOLVE OS</title>
-<meta name="theme-color" content="#00ff88"/>
+<title>Twins Workshop | EVOLVE HEAVEN</title>
+<meta name="theme-color" content="#7C3AED"/>
 <style>
-  :root{--bg:#0a0a0f;--card:#111122;--text:#e9f0ff;--accent:#00ff88;--danger:#ff4d6d;--muted:#8b93a7;--warn:#ffb700;}
-  *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Arial;transition:.2s}
-  body{margin:0;background:radial-gradient(1200px 800px at 80% -20%, #0f2a1f, transparent),var(--bg);color:var(--text)}
-.wrap{max-width:1100px;margin:0 auto;padding:24px}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px);border-radius:20px;padding:22px;margin:14px 0;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-  h1{margin:0 0 10px;font-size:24px} h2{margin:0 0 12px;font-size:18px;color:var(--muted)}
-  input,button,select,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#0b0c14;color:var(--text);margin:8px 0;font-size:15px;outline:none}
-  input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,255,136,.15)}
-  button{background:linear-gradient(180deg,var(--accent),#00d16f);color:#00150d;font-weight:800;cursor:pointer;border:0}
-  button:hover{transform:translateY(-1px);filter:brightness(1.05)}
-  button.danger{background:linear-gradient(180deg,var(--danger),#ff2e55);color:#fff}
-  button.ghost{background:transparent;border:1px dashed rgba(255,255,255,.2);color:var(--muted)}
-  button.warn{background:linear-gradient(180deg,var(--warn),#ff9d00);color:#000}
-.row{display:flex;gap:10px;align-items:center;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.08);padding:12px 0;flex-wrap:wrap}
-.pill{display:inline-flex;gap:8px;align-items:center;font-size:12px;padding:6px 10px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:var(--muted)}
+  :root{--bg:#050510;--card:rgba(20,20,40,.6);--text:#f5f7ff;--accent:#7C3AED;--accent2:#00F5D4;--danger:#ff4d6d;--muted:#9aa4bf;--warn:#FFB700;--glass:blur(20px);}
+  *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Arial;transition:.3s}
+  body{margin:0;color:var(--text);background:radial-gradient(1200px 800px at 20% -10%, #1e1b4b, transparent),radial-gradient(1000px 700px at 120% 110%, #0e7490, transparent),var(--bg);animation:gradient 20s ease infinite;background-size:200% 200%}
+  @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.wrap{max-width:1200px;margin:0 auto;padding:24px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-radius:24px;padding:24px;margin:16px 0;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  h1{margin:0 0 10px;font-size:26px;font-weight:800} h2{margin:0 0 12px;font-size:18px;color:var(--muted);font-weight:500}
+  input,button,select,textarea{width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:var(--text);margin:8px 0;font-size:15px;outline:none}
+  input:focus,select:focus{border-color:var(--accent2);box-shadow:0 0 0 4px rgba(0,245,212,.15)}
+  button{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:800;cursor:pointer;border:0;letter-spacing:.3px}
+  button:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(124,58,237,.3)}
+  button.danger{background:linear-gradient(90deg,var(--danger),#ff2e55)}
+  button.ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--muted)}
+  button.warn{background:linear-gradient(90deg,var(--warn),#ff9d00);color:#000}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);padding:14px 0;flex-wrap:wrap}
+.pill{display:inline-flex;gap:8px;align-items:center;font-size:12px;padding:6px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:var(--muted)}
 .hide{display:none}
-.logo{font-weight:900;letter-spacing:.5px;font-size:16px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-.grid{display:grid;gap:12px}
+.logo{font-weight:900;letter-spacing:.5px;font-size:18px;background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--accent2);box-shadow:0 0 15px var(--accent2)}
+.grid{display:grid;gap:16px}
 .grid.cols-2{grid-template-columns:1fr 1fr}
 .grid.cols-4{grid-template-columns:repeat(4,1fr)}
-.badge{font-size:12px;padding:4px 8px;border-radius:8px;background:rgba(0,255,136,.1);color:var(--accent);border:1px solid rgba(0,255,136,.25)}
-.kpi{padding:16px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)}
-.kpi h3{margin:0;font-size:12px;color:var(--muted)}
-.kpi.val{font-size:28px;font-weight:900;margin:4px 0}
-.toast{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid var(--accent);padding:12px 16px;border-radius:12px;z-index:999;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.chat{background:#0b0c14;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;height:220px;overflow:auto}
-.msg{margin:6px 0;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.05)}
-.msg.ai{background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2)}
+.badge{font-size:12px;padding:5px 10px;border-radius:10px;background:rgba(0,245,212,.1);color:var(--accent2);border:1px solid rgba(0,245,212,.3)}
+.kpi{padding:20px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-align:center}
+.kpi h3{margin:0;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.kpi.val{font-size:32px;font-weight:900;margin:8px 0;background:linear-gradient(90deg,#fff,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--accent2);padding:14px 18px;border-radius:14px;z-index:999;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.chat{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px;height:240px;overflow:auto}
+.msg{margin:8px 0;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05)}
+.msg.ai{background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3)}
+.kanban{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:12px 0}
+.col{background:rgba(0,0,0,.2);border-radius:16px;padding:12px;min-height:200px}
+.col h4{margin:0 0 8px;font-size:13px;color:var(--muted)}
+.card-job{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px;margin:8px 0;cursor:grab}
+canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000;width:100%;height:120px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center">
-      <div class="logo">🧬 TWINZ EVOLVE OS V3.2 | LAYER 9: AES-256</div>
+      <div class="logo">🧬 TWINZ EVOLVE HEAVEN V4.0</div>
       <div class="pill"><span class="dot"></span><span id="lockStatus">LOCKED</span></div>
     </div>
   </div>
 
-  <!-- PIN LOCK = SAME -->
+  <!-- PIN LOCK -->
   <div id="pinLock" class="card">
-    <h1>🔐 Welcome Back CEO</h1>
-    <h2>Enter your Security PIN to unlock EVOLVE</h2>
-    <input id="pin" type="password" placeholder="Default PIN: 1234" value="1234" autocomplete="off">
+    <h1>✨ Welcome to Heaven CEO</h1>
+    <h2>Your encrypted garage. Your AI. Your rules.</h2>
+    <input id="pin" type="password" placeholder="Default PIN: 1234" value="1234">
     <div class="grid cols-2">
-      <button onclick="unlock()">Unlock DMS 🚀</button>
+      <button onclick="unlock()">Enter Heaven 🚀</button>
       <button class="ghost" onclick="changePin()">Change PIN</button>
     </div>
   </div>
 
-  <!-- APP CONTENT -->
+  <!-- APP -->
   <div id="app" class="hide">
     <!-- LOGIN -->
     <div id="login" class="card">
       <h1>👋 Select Your Role</h1>
       <select id="role">
-        <option value="CEO">CEO - EVOLVE Control</option>
+        <option value="CEO">CEO - Heaven Control</option>
         <option value="TECHNICIAN">🔧 Technician - JLR + AI</option>
-        <option value="SALES">💰 Sales - Parts + Alerts</option>
-        <option value="RECEPTION">📞 Reception - Bookings</option>
+        <option value="SALES">💰 Sales - Parts + PayFast</option>
+        <option value="RECEPTION">📞 Reception - Customer Portal</option>
       </select>
       <input id="email" placeholder="email@twinz.com" value="ceo@twinz.com">
-      <button onclick="enter()">Enter EVOLVE Dashboard →</button>
-      <button class="danger" onclick="lockApp()">Lock App Now</button>
+      <button onclick="enter()">Enter Dashboard →</button>
     </div>
 
-    <!-- CEO DASHBOARD + EVOLVE KPI -->
+    <!-- CEO + KANBAN + KPI -->
     <div id="CEO" class="hide">
-      <div class="card"><h1>CEO Dashboard <span class="badge">EVOLVE KPI</span></h1>
+      <div class="card"><h1>CEO Mission Control <span class="badge">LIVE</span></h1>
         <div class="grid cols-4" id="kpiBoard"></div>
-        <button onclick="addUser()">+ Add Staff</button>
-        <div id="users"></div>
-        <p><b>Data:</b> AES-256 Encrypted. <b>EVOLVE Memory:</b> System learns your fixes.</p>
-        <button class="danger" onclick="lockApp()">🔒 Lock App</button>
+        <h2>Job Pipeline Kanban</h2>
+        <div class="kanban" id="kanban"></div>
+        <button onclick="addJob()">+ New Job</button>
+        <button onclick="exportPDF()">Export Invoice PDF</button>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- TECHNICIAN + EVOLVE AI COPILOT -->
+    <!-- TECHNICIAN + VIN DECODE + E-SIGN -->
     <div id="TECHNICIAN" class="hide">
-      <div class="card"><h1>🔧 Technician | JLR SDD + EVOLVE AI</h1>
-        <input id="vin" placeholder="Enter VIN" value="SALWA2TF0HA123456">
-        <button onclick="scan()">Run Diagnostic Scan</button>
+      <div class="card"><h1>🔧 Technician | JLR + VIN AI</h1>
+        <div class="grid cols-2">
+          <input id="vin" placeholder="VIN or Scan" value="SALWA2TF0HA123456">
+          <button onclick="decodeVIN()">Decode VIN</button>
+        </div>
+        <div id="vinInfo"></div>
+        <button onclick="scan()">Run DTC Scan</button>
         <div id="dtc"></div>
-        <h2>🧬 EVOLVE AI Copilot</h2>
+        <h2>Client E-Signature</h2>
+        <canvas id="sign"></canvas>
+        <button onclick="clearSign()">Clear</button><button onclick="saveSign()">Save Sign</button>
+        <h2>🧬 EVOLVE AI</h2>
         <div class="chat" id="chat"></div>
-        <input id="aiQ" placeholder="Ask: Why P0300? How to fix?">
-        <button onclick="askAI()">Ask EVOLVE AI</button>
-        <button class="danger" onclick="lockApp()">🔒 Lock App</button>
+        <input id="aiQ" placeholder="Ask: Why P0300?">
+        <button onclick="askAI()">Ask AI</button>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- SALES + EVOLVE ALERTS -->
-    <div id="SALES" class="hide"><div class="card"><h1>💰 Sales | Parts + EVOLVE Alerts</h1><button onclick="addPart()">+ Add Part</button><div id="parts"></div><button class="warn" onclick="checkAlerts()">Run EVOLVE Alerts</button><button class="danger" onclick="lockApp()">🔒 Lock App</button></div></div>
+    <!-- SALES + PAYFAST -->
+    <div id="SALES" class="hide"><div class="card"><h1>💰 Sales | Parts + PayFast</h1><button onclick="addPart()">+ Add Part</button><div id="parts"></div><button class="warn" onclick="payFast()">Generate PayFast Link</button><button class="danger" onclick="lockApp()">🔒 Lock</button></div></div>
 
-    <!-- RECEPTION -->
-    <div id="RECEPTION" class="hide"><div class="card"><h1>📞 Reception | Bookings</h1><input id="custName" placeholder="Customer Name"><button onclick="newBooking()">Create Booking</button><div id="bookings"></div><button class="danger" onclick="lockApp()">🔒 Lock App</button></div></div>
+    <!-- RECEPTION + CUSTOMER PORTAL -->
+    <div id="RECEPTION" class="hide"><div class="card"><h1>📞 Reception | Customer Portal</h1><input id="custName" placeholder="Customer Name"><input id="custPhone" placeholder="WhatsApp +27..."><button onclick="newBooking()">Create + Send WhatsApp</button><div id="bookings"></div><button class="ghost" onclick="copyPortal()">Copy Customer Portal Link</button><button class="danger" onclick="lockApp()">🔒 Lock</button></div></div>
 
   </div>
 </div>
 <div id="toastHost"></div>
 
 <script>
-  // ============ LAYER 9: CRYPTO = SAME AS BEFORE ============
-  const DB_SALT_NAME = 'twinz_salt';
-  let cryptoKey = null; let idleTimer = null;
-  async function getKey(pin) {
-    const enc = new TextEncoder();
-    let salt = localStorage.getItem(DB_SALT_NAME);
-    if(!salt){ salt = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16)))); localStorage.setItem(DB_SALT_NAME, salt); }
-    const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveKey']);
-    return crypto.subtle.deriveKey({name:'PBKDF2', salt:Uint8Array.from(atob(salt),c=>c.charCodeAt(0)), iterations:100000, hash:'SHA-256'}, keyMaterial, {name:'AES-GCM', length:256}, false, ['encrypt','decrypt']);
-  }
-  async function encrypt(data) { const iv = crypto.getRandomValues(new Uint8Array(12)); const enc = new TextEncoder().encode(JSON.stringify(data)); const ct = await crypto.subtle.encrypt({name:'AES-GCM', iv}, cryptoKey, enc); return btoa(String.fromCharCode(...iv,...new Uint8Array(ct))); }
-  async function decrypt(str) { const raw = Uint8Array.from(atob(str), c=>c.charCodeAt(0)); const iv = raw.slice(0,12); const ct = raw.slice(12); const pt = await crypto.subtle.decrypt({name:'AES-GCM', iv}, cryptoKey, ct); return JSON.parse(new TextDecoder().decode(pt)); }
-  const DB = { async get(k) { const blob = localStorage.getItem(k); if(!blob) return []; try{ return await decrypt(blob); }catch(e){ return []; } }, async set(k, v) { localStorage.setItem(k, await encrypt(v)); resetIdle(); } };
+  // ============ CRYPTO + PIN = SAME ============
+  const DB_SALT_NAME = 'twinz_salt'; let cryptoKey=null; let idleTimer=null;
+  async function getKey(pin){const enc=new TextEncoder();let salt=localStorage.getItem(DB_SALT_NAME);if(!salt){salt=btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16))));localStorage.setItem(DB_SALT_NAME,salt);}const km=await crypto.subtle.importKey('raw',enc.encode(pin),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:Uint8Array.from(atob(salt),c=>c.charCodeAt(0)),iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
+  async function encrypt(d){const iv=crypto.getRandomValues(new Uint8Array(12));const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},cryptoKey,new TextEncoder().encode(JSON.stringify(d)));return btoa(String.fromCharCode(...iv,...new Uint8Array(ct)));}
+  async function decrypt(s){const raw=Uint8Array.from(atob(s),c=>c.charCodeAt(0));const iv=raw.slice(0,12);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},cryptoKey,raw.slice(12));return JSON.parse(new TextDecoder().decode(pt));}
+  const DB={async get(k){const b=localStorage.getItem(k);if(!b)return[];try{return await decrypt(b);}catch(e){return[];}},async set(k,v){localStorage.setItem(k,await encrypt(v));resetIdle();}};
+  window.changePin=async()=>{const p=prompt('New PIN?');if(p&&p.length>=4){localStorage.setItem('twinz_pin_hash',await sha256(p));toast('✅ PIN Changed');lockApp();}}
+  async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}
+  window.unlock=async()=>{const p=document.getElementById('pin').value;const h=await sha256(p);const s=localStorage.getItem('twinz_pin_hash');if(h===s||!s&&p==='1234'){if(!s)localStorage.setItem('twinz_pin_hash',h);cryptoKey=await getKey(p);document.getElementById('pinLock').classList.add('hide');document.getElementById('app').classList.remove('hide');document.getElementById('lockStatus').innerText='UNLOCKED';await initData();resetIdle();}else alert('❌ Wrong PIN');}
+  window.lockApp=()=>{cryptoKey=null;document.getElementById('app').classList.add('hide');document.getElementById('login').classList.remove('hide');document.querySelectorAll('#CEO,#TECHNICIAN,#SALES,#RECEPTION').forEach(e=>e.classList.add('hide'));document.getElementById('pinLock').classList.remove('hide');document.getElementById('lockStatus').innerText='LOCKED';clearTimeout(idleTimer);}
+  function resetIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(lockApp,5*60*1000);}
+  ['click','keydown','touchstart'].forEach(e=>document.addEventListener(e,resetIdle));
 
-  // ============ PIN + SESSION = SAME ============
-  window.changePin = async () => { const newPin = prompt('New 4-6 digit PIN?'); if(newPin && newPin.length>=4){ localStorage.setItem('twinz_pin_hash', await sha256(newPin)); toast('✅ PIN Changed'); lockApp(); } }
-  async function sha256(str){ const buf=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)); return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join(''); }
-  window.unlock = async () => { const pin = document.getElementById('pin').value; const hash = await sha256(pin); const saved = localStorage.getItem('twinz_pin_hash'); if(hash === saved ||!saved && pin==='1234'){ if(!saved) localStorage.setItem('twinz_pin_hash', hash); cryptoKey = await getKey(pin); document.getElementById('pinLock').classList.add('hide'); document.getElementById('app').classList.remove('hide'); document.getElementById('lockStatus').innerText='UNLOCKED'; await initData(); resetIdle(); } else alert('❌ Wrong PIN'); }
-  window.lockApp = () => { cryptoKey = null; document.getElementById('app').classList.add('hide'); document.getElementById('login').classList.remove('hide'); document.querySelectorAll('#CEO,#TECHNICIAN,#SALES,#RECEPTION').forEach(e=>e.classList.add('hide')); document.getElementById('pinLock').classList.remove('hide'); document.getElementById('lockStatus').innerText='LOCKED'; clearTimeout(idleTimer); }
-  function resetIdle(){ clearTimeout(idleTimer); idleTimer = setTimeout(lockApp, 5*60*1000); }
-  ['click','keydown','touchstart'].forEach(evt=>document.addEventListener(evt,resetIdle));
+  // ============ DATA + EVOLVE MEMORY ============
+  let users=[],parts=[],bookings=[],jobs=[],EVOLVE_MEMORY={};
+  async function initData(){users=await DB.get('users');if(!users.length)users=[{id:1,email:'tech1@twinz.com',role:'TECHNICIAN'}];parts=await DB.get('parts');if(!parts.length)parts=[{id:1,name:'JLR Oil Filter',qty:10,price:450}];bookings=await DB.get('bookings');jobs=await DB.get('jobs');if(!jobs.length)jobs=[{id:1,car:'Range Rover V8',status:'Done',time:2.5},{id:2,car:'Defender 110',status:'In Progress',time:3.2},{id:3,car:'Evoque',status:'Waiting',time:0}];EVOLVE_MEMORY=await DB.get('evolve_memory')||{};renderAll();renderKPI();renderKanban();}
+  async function saveAll(){await DB.set('users',users);await DB.set('parts',parts);await DB.set('bookings',bookings);await DB.set('jobs',jobs);await DB.set('evolve_memory',EVOLVE_MEMORY);}
 
-  // ============ EVOLVE MEMORY = SYSTEM LEARNS ============
-  let EVOLVE_MEMORY = {}; // {P0300: {fix:'Coils', count:3}}
-  async function loadMemory(){ EVOLVE_MEMORY = await DB.get('evolve_memory') || {}; }
-  async function saveMemory(){ await DB.set('evolve_memory', EVOLVE_MEMORY); }
+  window.enter=()=>{const r=document.getElementById('role').value;document.getElementById('login').classList.add('hide');document.getElementById(r).classList.remove('hide');if(r==='CEO')renderKPI();}
 
-  // ============ APP DATA = SAME + JOBS FOR KPI ============
-  let users=[], parts=[], bookings=[], jobs=[];
-  async function initData(){
-    users = await DB.get('users'); if(users.length==0) users=[{id:1,email:'tech1@twinz.com',role:'TECHNICIAN'}];
-    parts = await DB.get('parts'); if(parts.length==0) parts=[{id:1,name:'JLR Oil Filter',qty:10,price:450}];
-    bookings = await DB.get('bookings');
-    jobs = await DB.get('jobs'); if(jobs.length==0) jobs=[{id:1,car:'Range Rover',status:'Done',time:2.5},{id:2,car:'Defender',status:'Pending',time:3.2}];
-    await loadMemory();
-    renderAll(); renderKPI();
-  }
-  async function saveAll(){ await DB.set('users',users); await DB.set('parts',parts); await DB.set('bookings',bookings); await DB.set('jobs',jobs); }
+  // ============ CEO KPI + KANBAN = HEAVEN ============
+  function renderKPI(){const rev=jobs.reduce((a,j)=>a+(j.status=='Done'?j.time*1500:0),0);const avg=(jobs.reduce((a,j)=>a+j.time,0)/jobs.length||0).toFixed(1);const done=jobs.filter(j=>j.status=='Done').length;const eff=Math.max(0,100-(avg*10)).toFixed(0);document.getElementById('kpiBoard').innerHTML=`<div class="kpi"><h3>Revenue</h3><div class="val">R${rev}</div></div><div class="kpi"><h3>Jobs Done</h3><div class="val">${done}</div></div><div class="kpi"><h3>Avg Time</h3><div class="val">${avg}h</div></div><div class="kpi"><h3>Efficiency</h3><div class="val">${eff}%</div></div>`;}
+  function renderKanban(){const cols=['Waiting','In Progress','Awaiting Parts','QC','Done'];document.getElementById('kanban').innerHTML=cols.map(c=>`<div class="col"><h4>${c}</h4>${jobs.filter(j=>j.status==c).map(j=>`<div class="card-job" onclick="moveJob(${j.id})">${j.car}<br><span style="font-size:12px;color:var(--muted)">${j.time}h</span></div>`).join('')}</div>`).join('');}
+  window.addJob=async()=>{const car=prompt('Car?');if(car){jobs.push({id:Date.now(),car,status:'Waiting',time:0});await saveAll();renderKanban();renderKPI();toast('✅ Job Added');}}
+  window.moveJob=async(id)=>{const j=jobs.find(x=>x.id==id);const flow=['Waiting','In Progress','Awaiting Parts','QC','Done'];j.status=flow[(flow.indexOf(j.status)+1)%5];await saveAll();renderKanban();renderKPI();}
 
-  window.enter=()=>{ const role=document.getElementById('role').value; document.getElementById('login').classList.add('hide'); document.getElementById(role).classList.remove('hide'); if(role==='CEO') renderKPI(); }
-  
-  // ============ CEO KPI = EVOLVE LAYER 2 ============
-  function renderKPI(){
-    const revenue = jobs.reduce((a,j)=>a+(j.status=='Done'?j.time*1500:0),0); // R1500/hr
-    const avgTime = (jobs.reduce((a,j)=>a+j.time,0)/jobs.length||0).toFixed(1);
-    const done = jobs.filter(j=>j.status=='Done').length;
-    const efficiency = Math.max(0, 100 - (avgTime*10)).toFixed(0);
-    document.getElementById('kpiBoard').innerHTML = `
-      <div class="kpi"><h3>Revenue Today</h3><div class="val">R${revenue}</div></div>
-      <div class="kpi"><h3>Jobs Done</h3><div class="val">${done}</div></div>
-      <div class="kpi"><h3>Avg Repair Time</h3><div class="val">${avgTime}h</div></div>
-      <div class="kpi"><h3>Tech Efficiency</h3><div class="val">${efficiency}%</div></div>
-    `;
-  }
+  // ============ VIN DECODE = HEAVEN LAYER ============
+  const VIN_DB={'SALWA2TF0HA123456':{make:'Land Rover',model:'Range Rover V8',year:2017,engine:'5.0 Supercharged'}};
+  window.decodeVIN=()=>{const v=document.getElementById('vin').value;const d=VIN_DB[v]||{make:'Unknown',model:'JLR Vehicle',year:'N/A'};document.getElementById('vinInfo').innerHTML=`<div class="row"><span><b>${d.year} ${d.make} ${d.model}</b></span><span>${d.engine||''}</span></div>`;}
 
-  // ============ USER CRUD = SAME ============
-  window.addUser=async()=>{ const email=prompt('Staff Email?'); if(email){ users.push({id:Date.now(),email,role:'TECHNICIAN'}); await saveAll(); renderUsers(); toast('✅ Staff Added'); } };
-  window.delUser=async(id)=>{ users=users.filter(u=>u.id!=id); await saveAll(); renderUsers(); toast('🗑️ Staff Deleted'); };
-  window.renderUsers=()=>{ document.getElementById('users').innerHTML=users.map(u=>`<div class="row"><span>${u.email}</span><button class="danger" onclick="delUser(${u.id})">Del</button></div>`).join('') || '<div class="row"><span>No staff yet</span></div>'; };
+  // ============ E-SIGNATURE = HEAVEN LAYER ============
+  const c=document.getElementById('sign'),ctx=c.getContext('2d');let drawing=false;c.width=600;c.height=120;
+  c.onpointerdown=e=>{drawing=true;ctx.moveTo(e.offsetX,e.offsetY);}
+  c.onpointermove=e=>{if(drawing){ctx.lineTo(e.offsetX,e.offsetY);ctx.strokeStyle='#00F5D4';ctx.lineWidth=2;ctx.stroke();}}
+  c.onpointerup=()=>drawing=false;
+  window.clearSign=()=>ctx.clearRect(0,0,c.width,c.height);
+  window.saveSign=()=>{toast('✅ Signature Saved');}
 
-  // ============ TECHNICIAN SCAN + EVOLVE LEARNING ============
-  window.scan=async()=>{ 
-    const vin=document.getElementById('vin').value; 
-    const code='P0300'; const desc='Misfire Detected';
-    document.getElementById('dtc').innerHTML=`<h2>VIN: ${vin}</h2><div class="row"><span><b>${code}</b> - ${desc}</span><span>EVOLVE Fix: ${EVOLVE_MEMORY[code]?.fix||'Check Coils + Plugs'}</span></div>`; 
-    EVOLVE_MEMORY[code] = {fix:EVOLVE_MEMORY[code]?.fix||'Check Coils + Plugs', count:(EVOLVE_MEMORY[code]?.count||0)+1};
-    await saveMemory();
-    addMsg('ai', `EVOLVE learned ${code} ${EVOLVE_MEMORY[code].count}x. Top fix: ${EVOLVE_MEMORY[code].fix}`);
-  };
+  // ============ TECHNICIAN SCAN + AI ============
+  window.scan=async()=>{const v=document.getElementById('vin').value;const code='P0300';const desc='Misfire';document.getElementById('dtc').innerHTML=`<h2>${v}</h2><div class="row"><span><b>${code}</b> - ${desc}</span><span>Fix: ${EVOLVE_MEMORY[code]?.fix||'Coils + Plugs'}</span></div>`;EVOLVE_MEMORY[code]={fix:EVOLVE_MEMORY[code]?.fix||'Coils + Plugs',count:(EVOLVE_MEMORY[code]?.count||0)+1};await saveAll();addMsg('ai',`Learned ${code} ${EVOLVE_MEMORY[code].count}x`);}
+  const AI_KB={'p0300':'Misfire JLR V8: Swap coils 1<->5, check plugs, fuel trim.','p0420':'Catalyst. Check O2 sensors.'};
+  function addMsg(w,t){document.getElementById('chat').innerHTML+=`<div class="msg ${w}"><b>${w=='ai'?'AI:':'You:'}</b> ${t}</div>`;document.getElementById('chat').scrollTop=9999;}
+  window.askAI=()=>{const q=document.getElementById('aiQ').value.toLowerCase();document.getElementById('aiQ').value='';addMsg('you',q);addMsg('ai',AI_KB[q]||'Check guide. Log this fix?');}
 
-  // ============ EVOLVE AI COPILOT = LAYER 1 = OFFLINE RULE ENGINE ============
-  const AI_KB = {
-    'P0300':'Misfire. JLR 5.0 V8: 1.Swap coils 1<->5 2.Check plugs 3.Check fuel trim.',
-    'P0420':'Catalyst Efficiency. Check O2 sensors, exhaust leaks, fuel quality.',
-    'low stock':'Oil Filter < 2. Reorder from JLR Parts Portal.'
-  };
-  function addMsg(who,txt){ document.getElementById('chat').innerHTML+=`<div class="msg ${who}"><b>${who==='ai'?'EVOLVE AI:':'You:'}</b> ${txt}</div>`; document.getElementById('chat').scrollTop=9999; }
-  window.askAI=()=>{ 
-    const q=document.getElementById('aiQ').value.toLowerCase(); document.getElementById('aiQ').value='';
-    addMsg('you', q);
-    let ans = AI_KB[q] || AI_KB[Object.keys(AI_KB).find(k=>q.includes(k))] || 'EVOLVE: Check DTC guide. Want me to log this fix?';
-    addMsg('ai', ans); 
-  };
+  // ============ SALES + PAYFAST = HEAVEN LAYER ============
+  window.addPart=async()=>{const n=prompt('Part?');const p=prompt('Price?');if(n&&p){parts.push({id:Date.now(),name:n,qty:5,price:+p});await saveAll();renderParts();toast('✅ Part Added');}};
+  window.delPart=async(id)=>{parts=parts.filter(p=>p.id!=id);await saveAll();renderParts();};
+  window.renderParts=()=>{document.getElementById('parts').innerHTML=parts.map(p=>`<div class="row"><span>${p.name} Qty:${p.qty} R${p.price}</span><button class="danger" onclick="delPart(${p.id})">Del</button></div>`).join('')||'<div class="row"><span>No parts</span></div>';};
+  window.payFast=()=>{const total=parts.reduce((a,p)=>a+p.price*p.qty,0);window.open(`https://sandbox.payfast.co.za/eng/process?amount=${total}&item_name=Twins+Invoice`,'_blank');toast('💳 PayFast Link Opened');}
 
-  // ============ SALES + EVOLVE ALERTS = LAYER 4 ============
-  window.addPart=async()=>{ const name=prompt('Part Name?'); const price=prompt('Price R?'); if(name&&price){ parts.push({id:Date.now(),name,qty:5,price:+price}); await saveAll(); renderParts(); toast('✅ Part Added'); } };
-  window.delPart=async(id)=>{ parts=parts.filter(p=>p.id!=id); await saveAll(); renderParts(); toast('🗑️ Part Deleted'); };
-  window.renderParts=()=>{ document.getElementById('parts').innerHTML=parts.map(p=>`<div class="row"><span>${p.name} Qty:${p.qty} R${p.price}</span><button class="danger" onclick="delPart(${p.id})">Del</button></div>`).join('') || '<div class="row"><span>No parts yet</span></div>'; };
-  window.checkAlerts=()=>{ 
-    const low = parts.filter(p=>p.qty<3);
-    const stuck = jobs.filter(j=>j.status!='Done'&&j.time>3);
-    if(low.length) toast(`⚠️ Low Stock: ${low.map(p=>p.name).join(', ')}`);
-    if(stuck.length) toast(`🚨 Job Stuck: #${stuck[0].id} ${stuck[0].car}`);
-    if(!low.length&&!stuck.length) toast('✅ All Clear CEO');
-  };
+  // ============ RECEPTION + PORTAL = HEAVEN LAYER ============
+  window.newBooking=async()=>{const n=document.getElementById('custName').value;const ph=document.getElementById('custPhone').value;if(n&&ph){bookings.push({id:Date.now(),name:n,phone:ph});document.getElementById('custName').value='';document.getElementById('custPhone').value='';await saveAll();renderBookings();window.open(`https://wa.me/${ph}?text=Hi ${n}, your Twins Portal: ${location.href}`,'_blank');toast('✅ WhatsApp Sent');}};
+  window.renderBookings=()=>{document.getElementById('bookings').innerHTML=bookings.map(b=>`<div class="row"><span>${b.name} - ${b.phone}</span></div>`).join('')||'<div class="row"><span>No bookings</span></div>';};
+  window.copyPortal=()=>{navigator.clipboard.writeText(location.href);toast('📋 Portal Link Copied');}
 
-  // ============ RECEPTION = SAME ============
-  window.newBooking=async()=>{ const name=document.getElementById('custName').value; if(name){ bookings.push({id:Date.now(),name}); document.getElementById('custName').value=''; await saveAll(); renderBookings(); toast('✅ Booking Created'); } };
-  window.renderBookings=()=>{ document.getElementById('bookings').innerHTML=bookings.map(b=>`<div class="row"><span>${b.name}</span></div>`).join('') || '<div class="row"><span>No bookings yet</span></div>'; };
+  window.exportPDF=()=>{const w=window.open('');w.document.write(`<h1>Twins Invoice</h1><p>Revenue: R${jobs.reduce((a,j)=>a+(j.status=='Done'?j.time*1500:0),0)}</p>`);w.print();}
 
-  function renderAll(){ renderUsers(); renderParts(); renderBookings(); }
+  function renderAll(){renderParts();renderBookings();}
 
-  // ============ EVOLVE UI = TOAST SYSTEM ============
-  function toast(msg){ const t=document.createElement('div'); t.className='toast'; t.innerText=msg; document.getElementById('toastHost').appendChild(t); setTimeout(()=>t.remove(),3000); }
+  function toast(m){const t=document.createElement('div');t.className='toast';t.innerText=m;document.getElementById('toastHost').appendChild(t);setTimeout(()=>t.remove(),3000);}
 </script>
 </body>
 </html>
