@@ -3,26 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-<title>Twins Workshop | EVOLVE HEAVEN</title>
-<meta name="theme-color" content="#7C3AED"/>
+<title>Green House Shibishane | EVOLVE HEAVEN</title>
+<meta name="theme-color" content="#16A34A"/>
+<link rel="manifest" href="data:application/manifest+json,{"name":"Green House Shibishane","short_name":"Shibishane","start_url":".","display":"standalone","background_color":"#050510","theme_color":"#16A34A","icons":[{"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=","sizes":"192x192","type":"image/png"}]}">
 <style>
-  :root{--bg:#050510;--card:rgba(20,20,40,.7);--text:#f5f7ff;--accent:#7C3AED;--accent2:#00F5D4;--danger:#ff4d6d;--muted:#9aa4bf;--warn:#FFB700;--glass:blur(20px);}
+  :root{--bg:#050510;--card:rgba(20,40,20,.7);--text:#f5fff7;--accent:#16A34A;--accent2:#FACC15;--danger:#ff4d6d;--muted:#9abf9e;--warn:#FFB700;--glass:blur(20px);}
   *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Arial;transition:.2s;-webkit-tap-highlight-color:transparent}
-  body{margin:0;color:var(--text);background:radial-gradient(1200px 800px at 20% -10%, #1e1b4b, transparent),var(--bg);padding-bottom:80px}
+  body{margin:0;color:var(--text);background:radial-gradient(1200px 800px at 20% -10%, #1b4b1e, transparent),var(--bg);padding-bottom:80px}
 .wrap{max-width:1200px;margin:0 auto;padding:16px}
 .card{background:var(--card);border:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 10px 30px rgba(0,0,0,.4)}
   h1{margin:0 0 8px;font-size:22px;font-weight:800} h2{margin:0 0 10px;font-size:16px;color:var(--muted)}
   input,button,select,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.3);color:var(--text);margin:6px 0;font-size:16px;min-height:48px}
-  button{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:800;border:0}
+  button{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#000;font-weight:800;border:0}
   button:active{transform:scale(.97)}
-  button.danger{background:linear-gradient(90deg,var(--danger),#ff2e55)}
+  button.danger{background:linear-gradient(90deg,var(--danger),#ff2e55);color:#fff}
   button.ghost{background:transparent;border:1px solid rgba(255,255,255,.2)}
   button.warn{background:linear-gradient(90deg,var(--warn),#ff9d00);color:#000}
-  button.success{background:linear-gradient(90deg,#10b981,#34d399)}
+  button.success{background:linear-gradient(90deg,#10b981,#34d399);color:#000}
 .row{display:flex;gap:10px;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);padding:12px 0;flex-wrap:wrap}
 .grid{display:grid;gap:12px}
 .grid.cols-2{grid-template-columns:1fr 1fr}
 .grid.cols-4{grid-template-columns:repeat(2,1fr)} @media(min-width:768px){.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
 .pill{font-size:12px;padding:6px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px}
 .hide{display:none}
 .logo{font-weight:900;font-size:16px;background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -36,14 +38,11 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
 .tabs{display:flex;gap:6px;overflow:auto}
 .tab{flex:0 0 auto;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.05);white-space:nowrap}
 .tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#000;font-weight:800}
-.bottomNav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);display:flex;justify-content:space-around;padding:8px 0;z-index:999}
-.navBtn{flex:1;text-align:center;font-size:11px;color:var(--muted)}
+.bottomNav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);display:flex;justify-content:space-around;padding:8px 0;z-index:999;overflow-x:auto}
+.navBtn{flex:0 0 auto;padding:8px 12px;text-align:center;font-size:11px;color:var(--muted)}
 .navBtn.active{color:var(--accent2);font-weight:800}
 .toast{position:fixed;bottom:90px;right:16px;background:var(--card);border:1px solid var(--accent2);padding:12px 16px;border-radius:12px;z-index:999}
-.chat{height:200px;overflow:auto;background:rgba(0,0,0,.3);border-radius:12px;padding:10px}
-.msg{margin:6px 0;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.05)}
-.msg.ai{background:rgba(124,58,237,.15)}
-.part-img{width:60px;height:60px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.2)}
+.img-thumb{width:60px;height:60px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.2)}
 .clockBtn{font-size:14px;padding:12px;border-radius:12px}
 </style>
 </head>
@@ -51,7 +50,7 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
 <div class="wrap">
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center">
-      <div class="logo">🧬 TWINZ V4.2 HEAVEN PRO</div>
+      <div class="logo">🌿 GREEN HOUSE SHIBISHANE V5.0</div>
       <div class="pill" id="lockStatus">LOCKED</div>
     </div>
   </div>
@@ -71,34 +70,86 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
       <h1>Select Role</h1>
       <select id="role">
         <option value="CEO">CEO - All Access</option>
+        <option value="RESTAURANT">🍽️ Restaurant/Bar</option>
         <option value="TECHNICIAN">🔧 Technician</option>
-        <option value="SALES">💰 Sales</option>
         <option value="RECEPTION">📞 Reception</option>
+        <option value="MAINTENANCE">🛠️ Maintenance</option>
+        <option value="DJ">🎧 DJ Booth</option>
+        <option value="POOL">🏊 Pool</option>
+        <option value="GUEST">🏠 Guest Houses</option>
+        <option value="CARWASH">🚿 Car Wash</option>
+        <option value="CLUB">🌙 Late Night Club</option>
       </select>
-      <input id="email" value="ceo@twinz.com">
+      <input id="email" value="ceo@shibishane.com">
       <button onclick="enter()">Enter →</button>
     </div>
 
     <!-- CEO ALL ACCESS + HOURS -->
     <div id="CEO" class="hide">
       <div class="card">
-        <h1>CEO Command <span class="pill">All Modules</span></h1>
-        <div class="grid cols-4" id="kpiBoard"></div>
-        <h2>⏱️ My Hours</h2>
-        <div class="grid cols-3">
-          <button id="clockBtn" class="clockBtn success" onclick="toggleClock()">Clock In</button>
-          <div class="kpi"><h3>Today</h3><div class="val" id="hrsToday">0h</div></div>
-          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeek">0h</div></div>
+        <h1>CEO Command <span class="pill">9 Modules</span></h1>
+        <div class="tabs" id="ceoTabs">
+          <div class="tab active" onclick="showCeoTab('kpi')">KPI</div>
+          <div class="tab" onclick="showCeoTab('rest')">Restaurant</div>
+          <div class="tab" onclick="showCeoTab('tech')">Tech</div>
+          <div class="tab" onclick="showCeoTab('rec')">Reception</div>
+          <div class="tab" onclick="showCeoTab('maint')">Maintenance</div>
+          <div class="tab" onclick="showCeoTab('dj')">DJ</div>
+          <div class="tab" onclick="showCeoTab('pool')">Pool</div>
+          <div class="tab" onclick="showCeoTab('guest')">Guest</div>
+          <div class="tab" onclick="showCeoTab('wash')">Car Wash</div>
+          <div class="tab" onclick="showCeoTab('club')">Club</div>
         </div>
-        <h2>Job Pipeline</h2>
-        <div class="kanban" id="kanban"></div>
-        <button onclick="addJob()">+ New Job</button>
-        <button onclick="exportPDF()">Export PDF</button>
+        <div id="ceo_kpi">
+          <div class="grid cols-4" id="kpiBoard"></div>
+          <h2>⏱️ My Hours</h2>
+          <div class="grid cols-3">
+            <button id="clockBtn" class="clockBtn success" onclick="toggleClock()">Clock In</button>
+            <div class="kpi"><h3>Today</h3><div class="val" id="hrsToday">0h</div></div>
+            <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeek">0h</div></div>
+          </div>
+          <h2>All Tasks Pipeline</h2>
+          <div class="kanban" id="kanban"></div>
+          <button onclick="addTask()">+ New Task</button>
+          <button onclick="exportPDF()">Export Report PDF</button>
+        </div>
+        <div id="ceo_rest" class="hide"></div>
+        <div id="ceo_tech" class="hide"></div>
+        <div id="ceo_rec" class="hide"></div>
+        <div id="ceo_maint" class="hide"></div>
+        <div id="ceo_dj" class="hide"></div>
+        <div id="ceo_pool" class="hide"></div>
+        <div id="ceo_guest" class="hide"></div>
+        <div id="ceo_wash" class="hide"></div>
+        <div id="ceo_club" class="hide"></div>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- TECHNICIAN ADVANCED + HOURS -->
+    <!-- RESTAURANT/BAR + HOURS -->
+    <div id="RESTAURANT" class="hide">
+      <div class="card">
+        <h1>🍽️ Restaurant & Bar</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnRest" class="clockBtn success" onclick="toggleClock('RESTAURANT')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayRest">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekRest">0h</div></div>
+        </div>
+        <input id="menuItem" placeholder="Menu Item: Shisa Nyama, Beer">
+        <input id="menuPrice" type="number" placeholder="Price R">
+        <textarea id="menuDesc" placeholder="Description"></textarea>
+        <input id="menuPhoto" type="file" accept="image/*" onchange="loadPhoto(event)">
+        <div class="grid cols-2">
+          <button onclick="addMenu()">+ Add Item</button>
+          <button class="ghost" onclick="addAnotherMenu()">+ Add Another</button>
+        </div>
+        <div id="menuList"></div>
+        <button class="warn" onclick="makeBillPDF()">Generate Bill PDF</button>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <!-- TECHNICIAN + HOURS -->
     <div id="TECHNICIAN" class="hide">
       <div class="card">
         <h1>🔧 Technician Pro</h1>
@@ -107,55 +158,18 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
           <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayTech">0h</div></div>
           <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekTech">0h</div></div>
         </div>
-        <div class="grid cols-2">
-          <input id="vin" placeholder="VIN" value="SALWA2TF0HA123456">
-          <button onclick="decodeVIN()">Decode</button>
-        </div>
-        <div id="vinInfo"></div>
-        <h2>Advanced DTC Tool</h2>
-        <button onclick="scan()">Run Full Scan</button>
-        <div id="dtc"></div>
-        <h2>Job Cart + Hours</h2>
+        <input id="issue" placeholder="Issue: Fridge, Sound, Lights">
+        <button onclick="addIssue()">Log Issue</button>
+        <div id="issues"></div>
+        <h2>Job Hours</h2>
         <input id="jobHours" type="number" placeholder="Hours 0.5">
         <button onclick="addToCart()">Add to Job Cart</button>
         <div id="jobCart"></div>
-        <h2>E-Sign</h2>
-        <canvas id="sign"></canvas>
-        <div class="grid cols-2"><button onclick="clearSign()">Clear</button><button onclick="saveSign()">Save</button></div>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- SALES ADVANCED + PHOTO + HOURS -->
-    <div id="SALES" class="hide">
-      <div class="card">
-        <h1>💰 Sales Pro</h1>
-        <div class="grid cols-3">
-          <button id="clockBtnSales" class="clockBtn success" onclick="toggleClock('SALES')">Clock In</button>
-          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodaySales">0h</div></div>
-          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekSales">0h</div></div>
-        </div>
-        <input id="partMake" placeholder="Car Make: JLR, BMW, VW">
-        <input id="partName" placeholder="Part Name: Oil Filter">
-        <textarea id="partDesc" placeholder="Description: OE Spec, 5.0 V8"></textarea>
-        <select id="partCat"><option>Engine</option><option>Brakes</option><option>Suspension</option><option>Body</option></select>
-        <div class="grid cols-2">
-          <input id="partQty" type="number" placeholder="Qty">
-          <input id="partPrice" type="number" placeholder="Cost R">
-        </div>
-        <input id="partMarkup" type="number" placeholder="Markup % 35" value="35">
-        <input id="partPhoto" type="file" accept="image/*" onchange="loadPhoto(event)">
-        <div class="grid cols-2">
-          <button onclick="addPart()">+ Add Part</button>
-          <button class="ghost" onclick="addAnother()">+ Add Another</button>
-        </div>
-        <div id="parts"></div>
-        <button class="warn" onclick="payFast()">PayFast Link</button>
-        <button class="danger" onclick="lockApp()">🔒 Lock</button>
-      </div>
-    </div>
-
-    <!-- RECEPTION + PDF INVOICE + HOURS -->
+    <!-- RECEPTION + HOURS -->
     <div id="RECEPTION" class="hide">
       <div class="card">
         <h1>📞 Reception</h1>
@@ -164,114 +178,251 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
           <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayRec">0h</div></div>
           <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekRec">0h</div></div>
         </div>
-        <input id="custName" placeholder="Customer Name">
-        <input id="custPhone" placeholder="WhatsApp +27">
-        <input id="custEmail" placeholder="Email for Invoice">
+        <input id="guestName" placeholder="Guest Name">
+        <input id="guestPhone" placeholder="WhatsApp +27">
+        <select id="guestType"><option>Restaurant</option><option>Guest House</option><option>Pool</option><option>Club</option></select>
         <button onclick="newBooking()">Create + WhatsApp</button>
-        <button class="warn" onclick="makeInvoicePDF()">Generate PDF Invoice</button>
         <div id="bookings"></div>
         <button class="ghost" onclick="copyPortal()">Copy Portal Link</button>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
+
+    <!-- MAINTENANCE -->
+    <div id="MAINTENANCE" class="hide">
+      <div class="card">
+        <h1>🛠️ Maintenance Crew</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnMaint" class="clockBtn success" onclick="toggleClock('MAINTENANCE')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayMaint">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekMaint">0h</div></div>
+        </div>
+        <input id="maintTask" placeholder="Task: Pool Clean, Garden, Repairs">
+        <button onclick="addMaint()">Add Task</button>
+        <div id="maintList"></div>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <!-- DJ -->
+    <div id="DJ" class="hide">
+      <div class="card">
+        <h1>🎧 DJ Booth</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnDJ" class="clockBtn success" onclick="toggleClock('DJ')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayDJ">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekDJ">0h</div></div>
+        </div>
+        <input id="djSong" placeholder="Song Request / Playlist">
+        <button onclick="addSong()">Add to Queue</button>
+        <div id="djQueue"></div>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <!-- POOL -->
+    <div id="POOL" class="hide">
+      <div class="card">
+        <h1>🏊 Pool Area</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnPool" class="clockBtn success" onclick="toggleClock('POOL')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayPool">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekPool">0h</div></div>
+        </div>
+        <input id="poolGuest" placeholder="Guest Name">
+        <button onclick="poolCheckin()">Check In</button>
+        <div id="poolList"></div>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <!-- GUEST HOUSES -->
+    <div id="GUEST" class="hide">
+      <div class="card">
+        <h1>🏠 Guest Houses</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnGuest" class="clockBtn success" onclick="toggleClock('GUEST')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayGuest">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekGuest">0h</div></div>
+        </div>
+        <input id="roomNo" placeholder="Room 1-10">
+        <input id="roomGuest" placeholder="Guest Name">
+        <button onclick="bookRoom()">Book Room</button>
+        <div id="rooms"></div>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <!-- CAR WASH -->
+    <div id="CARWASH" class="hide">
+      <div class="card">
+        <h1>🚿 Car Wash</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnWash" class="clockBtn success" onclick="toggleClock('CARWASH')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayWash">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekWash">0h</div></div>
+        </div>
+        <input id="carReg" placeholder="Car Reg: ABC123GP">
+        <select id="washType"><option>Basic R50</option><option>Full R120</option><option>VIP R200</option></select>
+        <button onclick="addWash()">Add Wash</button>
+        <div id="washList"></div>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <!-- CLUB -->
+    <div id="CLUB" class="hide">
+      <div class="card">
+        <h1>🌙 Late Night Club</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnClub" class="clockBtn success" onclick="toggleClock('CLUB')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayClub">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekClub">0h</div></div>
+        </div>
+        <input id="clubGuest" placeholder="Guest Name">
+        <button onclick="clubEntry()">Club Entry R50</button>
+        <div id="clubList"></div>
+        <button class="danger" onclick="lockApp()">🔒 Lock</button>
+      </div>
+    </div>
+
   </div>
 </div>
 <div class="bottomNav" id="bottomNav" style="display:none">
   <div class="navBtn active" onclick="switchRole('CEO')">CEO</div>
+  <div class="navBtn" onclick="switchRole('RESTAURANT')">Food</div>
   <div class="navBtn" onclick="switchRole('TECHNICIAN')">Tech</div>
-  <div class="navBtn" onclick="switchRole('SALES')">Sales</div>
   <div class="navBtn" onclick="switchRole('RECEPTION')">Rec</div>
+  <div class="navBtn" onclick="switchRole('MAINTENANCE')">Maint</div>
+  <div class="navBtn" onclick="switchRole('DJ')">DJ</div>
+  <div class="navBtn" onclick="switchRole('POOL')">Pool</div>
+  <div class="navBtn" onclick="switchRole('GUEST')">Guest</div>
+  <div class="navBtn" onclick="switchRole('CARWASH')">Wash</div>
+  <div class="navBtn" onclick="switchRole('CLUB')">Club</div>
 </div>
 <div id="toastHost"></div>
 
 <script>
   // ============ CRYPTO + PIN = SAME ============
-  const DB_SALT_NAME='twinz_salt';let cryptoKey=null;let idleTimer=null;
+  const DB_SALT_NAME='shibishane_salt';let cryptoKey=null;let idleTimer=null;
   async function getKey(p){const e=new TextEncoder();let s=localStorage.getItem(DB_SALT_NAME);if(!s){s=btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16))));localStorage.setItem(DB_SALT_NAME,s);}const km=await crypto.subtle.importKey('raw',e.encode(p),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:Uint8Array.from(atob(s),c=>c.charCodeAt(0)),iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
   async function encrypt(d){const iv=crypto.getRandomValues(new Uint8Array(12));const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},cryptoKey,new TextEncoder().encode(JSON.stringify(d)));return btoa(String.fromCharCode(...iv,...new Uint8Array(ct)));}
   async function decrypt(s){const r=Uint8Array.from(atob(s),c=>c.charCodeAt(0));const iv=r.slice(0,12);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},cryptoKey,r.slice(12));return JSON.parse(new TextDecoder().decode(pt));}
   const DB={async get(k){const b=localStorage.getItem(k);if(!b)return[];try{return await decrypt(b);}catch(e){return[];}},async set(k,v){localStorage.setItem(k,await encrypt(v));resetIdle();}};
-  window.changePin=async()=>{const p=prompt('New PIN?');if(p&&p.length>=4){localStorage.setItem('twinz_pin_hash',await sha256(p));toast('✅ PIN');lockApp();}}
+  window.changePin=async()=>{const p=prompt('New PIN?');if(p&&p.length>=4){localStorage.setItem('shibishane_pin_hash',await sha256(p));toast('✅ PIN');lockApp();}}
   async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}
-  window.unlock=async()=>{const p=document.getElementById('pin').value;const h=await sha256(p);const s=localStorage.getItem('twinz_pin_hash');if(h===s||!s&&p==='1234'){if(!s)localStorage.setItem('twinz_pin_hash',h);cryptoKey=await getKey(p);document.getElementById('pinLock').classList.add('hide');document.getElementById('app').classList.remove('hide');document.getElementById('lockStatus').innerText='UNLOCKED';document.getElementById('bottomNav').style.display='flex';await initData();resetIdle();}else alert('❌ PIN');}
-  window.lockApp=()=>{cryptoKey=null;document.getElementById('app').classList.add('hide');document.getElementById('login').classList.remove('hide');document.querySelectorAll('#CEO,#TECHNICIAN,#SALES,#RECEPTION').forEach(e=>e.classList.add('hide'));document.getElementById('pinLock').classList.remove('hide');document.getElementById('lockStatus').innerText='LOCKED';document.getElementById('bottomNav').style.display='none';clearTimeout(idleTimer);}
+  window.unlock=async()=>{const p=document.getElementById('pin').value;const h=await sha256(p);const s=localStorage.getItem('shibishane_pin_hash');if(h===s||!s&&p==='1234'){if(!s)localStorage.setItem('shibishane_pin_hash',h);cryptoKey=await getKey(p);document.getElementById('pinLock').classList.add('hide');document.getElementById('app').classList.remove('hide');document.getElementById('lockStatus').innerText='UNLOCKED';document.getElementById('bottomNav').style.display='flex';await initData();resetIdle();}else alert('❌ PIN');}
+  window.lockApp=()=>{cryptoKey=null;document.getElementById('app').classList.add('hide');document.getElementById('login').classList.remove('hide');document.querySelectorAll('#CEO,#RESTAURANT,#TECHNICIAN,#RECEPTION,#MAINTENANCE,#DJ,#POOL,#GUEST,#CARWASH,#CLUB').forEach(e=>e.classList.add('hide'));document.getElementById('pinLock').classList.remove('hide');document.getElementById('lockStatus').innerText='LOCKED';document.getElementById('bottomNav').style.display='none';clearTimeout(idleTimer);}
   function resetIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(lockApp,5*60*1000);}
   ['click','keydown','touchstart'].forEach(e=>document.addEventListener(e,resetIdle));
 
   // ============ DATA + HOURS ============
-  let users=[],parts=[],bookings=[],jobs=[],jobCart=[],EVOLVE_MEMORY={},timeLogs=[];
-  let tempPhoto=''; // base64
-  async function initData(){users=await DB.get('users');if(!users.length)users=[{id:1,email:'ceo@twinz.com'}];parts=await DB.get('parts');if(!parts.length)parts=[{id:1,make:'JLR',name:'Oil Filter',desc:'OE',cat:'Engine',qty:10,price:450,markup:35,img:''}];bookings=await DB.get('bookings');jobs=await DB.get('jobs');if(!jobs.length)jobs=[{id:1,car:'Range Rover',status:'Done',time:2.5}];EVOLVE_MEMORY=await DB.get('evolve_memory')||{};timeLogs=await DB.get('timelogs')||[];renderAll();renderKPI();renderKanban();renderHoursAll();}
-  async function saveAll(){await DB.set('users',users);await DB.set('parts',parts);await DB.set('bookings',bookings);await DB.set('jobs',jobs);await DB.set('evolve_memory',EVOLVE_MEMORY);await DB.set('timelogs',timeLogs);}
+  let users=[],menu=[],bookings=[],tasks=[],jobCart=[],issues=[],maint=[],djQueue=[],pool=[],rooms=[],washes=[],club=[],timeLogs=[];
+  let tempPhoto='';
+  async function initData(){users=await DB.get('users');if(!users.length)users=[{id:1,email:'ceo@shibishane.com'}];menu=await DB.get('menu');tasks=await DB.get('tasks');if(!tasks.length)tasks=[{id:1,name:'Pool Cleaning',status:'Waiting',time:2}];bookings=await DB.get('bookings');issues=await DB.get('issues');maint=await DB.get('maint');djQueue=await DB.get('djQueue');pool=await DB.get('pool');rooms=await DB.get('rooms');washes=await DB.get('washes');club=await DB.get('club');timeLogs=await DB.get('timelogs')||[];renderAll();renderKPI();renderKanban();renderHoursAll();}
+  async function saveAll(){await DB.set('users',users);await DB.set('menu',menu);await DB.set('tasks',tasks);await DB.set('bookings',bookings);await DB.set('issues',issues);await DB.set('maint',maint);await DB.set('djQueue',djQueue);await DB.set('pool',pool);await DB.set('rooms',rooms);await DB.set('washes',washes);await DB.set('club',club);await DB.set('timelogs',timeLogs);}
 
-  window.enter=()=>{const r=document.getElementById('role').value;document.getElementById('login').classList.add('hide');document.getElementById(r).classList.remove('hide');document.querySelectorAll('.navBtn').forEach((b,i)=>b.classList.toggle('active',i==['CEO','TECHNICIAN','SALES','RECEPTION'].indexOf(r)));renderHours(r);}
+  window.enter=()=>{const r=document.getElementById('role').value;document.getElementById('login').classList.add('hide');document.getElementById(r).classList.remove('hide');document.querySelectorAll('.navBtn').forEach((b,i)=>b.classList.toggle('active',i==['CEO','RESTAURANT','TECHNICIAN','RECEPTION','MAINTENANCE','DJ','POOL','GUEST','CARWASH','CLUB'].indexOf(r)));renderHours(r);if(r==='CEO')loadCeoAll();}
 
-  // ============ WORKING HOURS SYSTEM ============
+  // ============ CEO ALL ACCESS ============
+  function showCeoTab(t){document.querySelectorAll('#ceoTabs.tab').forEach(x=>x.classList.remove('active'));event.target.classList.add('active');['kpi','rest','tech','rec','maint','dj','pool','guest','wash','club'].forEach(x=>document.getElementById('ceo_'+x).classList.toggle('hide',x!=t));}
+  async function loadCeoAll(){renderKPI();renderKanban();document.getElementById('ceo_rest').innerHTML=document.getElementById('RESTAURANT').innerHTML;document.getElementById('ceo_tech').innerHTML=document.getElementById('TECHNICIAN').innerHTML;document.getElementById('ceo_rec').innerHTML=document.getElementById('RECEPTION').innerHTML;document.getElementById('ceo_maint').innerHTML=document.getElementById('MAINTENANCE').innerHTML;document.getElementById('ceo_dj').innerHTML=document.getElementById('DJ').innerHTML;document.getElementById('ceo_pool').innerHTML=document.getElementById('POOL').innerHTML;document.getElementById('ceo_guest').innerHTML=document.getElementById('GUEST').innerHTML;document.getElementById('ceo_wash').innerHTML=document.getElementById('CARWASH').innerHTML;document.getElementById('ceo_club').innerHTML=document.getElementById('CLUB').innerHTML;}
+  window.switchRole=(r)=>{document.querySelectorAll('#CEO,#RESTAURANT,#TECHNICIAN,#RECEPTION,#MAINTENANCE,#DJ,#POOL,#GUEST,#CARWASH,#CLUB').forEach(e=>e.classList.add('hide'));document.getElementById(r).classList.remove('hide');document.querySelectorAll('.navBtn').forEach(b=>b.classList.toggle('active',b.innerText.toLowerCase().includes(r.toLowerCase().slice(0,3))));if(r==='CEO')loadCeoAll();renderHours(r);}
+
+  // ============ WORKING HOURS ============
   function renderHours(role){const logs=timeLogs.filter(t=>t.role==role);const now=Date.now();const today=logs.filter(t=>new Date(t.in).toDateString()==new Date().toDateString());const week=logs.filter(t=>new Date(t.in)>new Date(now-7*24*3600*1000));
     const sum=arr=>arr.reduce((a,t)=>a+((t.out||now)-t.in)/3600000,0).toFixed(1);
-    if(role=='CEO'){document.getElementById('hrsToday').innerText=sum(today)+'h';document.getElementById('hrsWeek').innerText=sum(week)+'h';}
-    if(role=='TECHNICIAN'){document.getElementById('hrsTodayTech').innerText=sum(today)+'h';document.getElementById('hrsWeekTech').innerText=sum(week)+'h';}
-    if(role=='SALES'){document.getElementById('hrsTodaySales').innerText=sum(today)+'h';document.getElementById('hrsWeekSales').innerText=sum(week)+'h';}
-    if(role=='RECEPTION'){document.getElementById('hrsTodayRec').innerText=sum(today)+'h';document.getElementById('hrsWeekRec').innerText=sum(week)+'h';}
+    const map={CEO:'',RESTAURANT:'Rest',TECHNICIAN:'Tech',RECEPTION:'Rec',MAINTENANCE:'Maint',DJ:'DJ',POOL:'Pool',GUEST:'Guest',CARWASH:'Wash',CLUB:'Club'};
+    const suf=map[role];
+    if(document.getElementById('hrsToday'+suf)){document.getElementById('hrsToday'+suf).innerText=sum(today)+'h';document.getElementById('hrsWeek'+suf).innerText=sum(week)+'h';}
     const active=timeLogs.find(t=>t.role==role&&!t.out);
-    const btn=document.getElementById('clockBtn'+(role=='TECHNICIAN'?'Tech':role=='SALES'?'Sales':role=='RECEPTION'?'Rec':''));
+    const btn=document.getElementById('clockBtn'+suf);
     if(btn){btn.innerText=active?'Clock Out':'Clock In';btn.className='clockBtn '+(active?'danger':'success');}
   }
-  function renderHoursAll(){['CEO','TECHNICIAN','SALES','RECEPTION'].forEach(renderHours);}
+  function renderHoursAll(){['CEO','RESTAURANT','TECHNICIAN','RECEPTION','MAINTENANCE','DJ','POOL','GUEST','CARWASH','CLUB'].forEach(renderHours);}
   window.toggleClock=async(role=document.getElementById('role').value)=>{const active=timeLogs.find(t=>t.role==role&&!t.out);if(active){active.out=Date.now();}else{timeLogs.push({id:Date.now(),role,in:Date.now(),out:null});}await saveAll();renderHours(role);toast(active?'⏱️ Clocked Out':'⏱️ Clocked In');}
 
   // ============ KPI + KANBAN ============
-  function renderKPI(){const rev=jobs.reduce((a,j)=>a+(j.status=='Done'?j.time*1500:0),0);const avg=(jobs.reduce((a,j)=>a+j.time,0)/jobs.length||0).toFixed(1);const done=jobs.filter(j=>j.status=='Done').length;const eff=Math.max(0,100-(avg*10)).toFixed(0);document.getElementById('kpiBoard').innerHTML=`<div class="kpi"><h3>Revenue</h3><div class="val">R${rev}</div></div><div class="kpi"><h3>Done</h3><div class="val">${done}</div></div><div class="kpi"><h3>Avg</h3><div class="val">${avg}h</div></div><div class="kpi"><h3>Eff</h3><div class="val">${eff}%</div></div>`;}
-  function renderKanban(){const cols=['Waiting','In Progress','Awaiting Parts','QC','Done'];document.getElementById('kanban').innerHTML=cols.map(c=>`<div class="col"><h4>${c}</h4>${jobs.filter(j=>j.status==c).map(j=>`<div class="card-job" onclick="moveJob(${j.id})">${j.car}<br><span style="font-size:12px">${j.time}h</span></div>`).join('')}</div>`).join('');}
-  window.addJob=async()=>{const car=prompt('Car?');if(car){jobs.push({id:Date.now(),car,status:'Waiting',time:0});await saveAll();renderKanban();renderKPI();toast('✅ Job');}}
-  window.moveJob=async(id)=>{const j=jobs.find(x=>x.id==id);const f=['Waiting','In Progress','Awaiting Parts','QC','Done'];j.status=f[(f.indexOf(j.status)+1)%5];await saveAll();renderKanban();renderKPI();}
+  function renderKPI(){const rev=tasks.reduce((a,t)=>a+(t.status=='Done'?t.time*500:0),0)+washes.length*120+club.length*50;const done=tasks.filter(t=>t.status=='Done').length;const avg=(tasks.reduce((a,t)=>a+t.time,0)/tasks.length||0).toFixed(1);document.getElementById('kpiBoard').innerHTML=`<div class="kpi"><h3>Revenue</h3><div class="val">R${rev}</div></div><div class="kpi"><h3>Tasks Done</h3><div class="val">${done}</div></div><div class="kpi"><h3>Guests</h3><div class="val">${bookings.length}</div></div><div class="kpi"><h3>Avg Hrs</h3><div class="val">${avg}h</div></div>`;}
+  function renderKanban(){const cols=['Waiting','In Progress','Awaiting Stock','QC','Done'];document.getElementById('kanban').innerHTML=cols.map(c=>`<div class="col"><h4>${c}</h4>${tasks.filter(t=>t.status==c).map(t=>`<div class="card-job" onclick="moveTask(${t.id})">${t.name}<br><span style="font-size:12px">${t.time}h</span></div>`).join('')}</div>`).join('');}
+  window.addTask=async()=>{const name=prompt('Task?');if(name){tasks.push({id:Date.now(),name,status:'Waiting',time:0});await saveAll();renderKanban();renderKPI();toast('✅ Task');}}
+  window.moveTask=async(id)=>{const t=tasks.find(x=>x.id==id);const f=['Waiting','In Progress','Awaiting Stock','QC','Done'];t.status=f[(f.indexOf(t.status)+1)%5];await saveAll();renderKanban();renderKPI();}
 
-  // ============ TECHNICIAN ============
-  const VIN_DB={'SALWA2TF0HA123456':{make:'Land Rover',model:'Range Rover V8',year:2017,engine:'5.0 SC'}};
-  window.decodeVIN=()=>{const v=document.getElementById('vin').value;const d=VIN_DB[v]||{make:'JLR',model:'Vehicle',year:'N/A'};document.getElementById('vinInfo').innerHTML=`<div class="row"><b>${d.year} ${d.make} ${d.model}</b><span>${d.engine||''}</span></div>`;}
-  window.scan=async()=>{const code='P0300';const data={code,desc:'Misfire',freeze:{rpm:780,temp:92,load:18}};document.getElementById('dtc').innerHTML=`<div class="row"><span><b>${code}</b> ${data.desc}</span><span>RPM:${data.freeze.rpm} Temp:${data.freeze.temp}°C</span></div>`;EVOLVE_MEMORY[code]={fix:'Coils+Plugs',count:(EVOLVE_MEMORY[code]?.count||0)+1};await saveAll();}
-  window.addToCart=()=>{const h=parseFloat(document.getElementById('jobHours').value)||0;jobCart.push({id:Date.now(),hours:h});renderCart();}
-  function renderCart(){const total=jobCart.reduce((a,i)=>a+i.hours,0);document.getElementById('jobCart').innerHTML=`${jobCart.map(i=>`<div class="row"><span>Task</span><span>${i.hours}h</span></div>`).join('')}<div class="row"><b>Total</b><b>${total}h</b></div>`;}
-  const c=document.getElementById('sign'),ctx=c.getContext('2d');let drawing=false;c.width=600;c.height=100;c.onpointerdown=e=>{drawing=true;ctx.moveTo(e.offsetX,e.offsetY);}
-  c.onpointermove=e=>{if(drawing){ctx.lineTo(e.offsetX,e.offsetY);ctx.strokeStyle='#00F5D4';ctx.lineWidth=2;ctx.stroke();}}
-  c.onpointerup=()=>drawing=false;
-  window.clearSign=()=>ctx.clearRect(0,0,c.width,c.height);
-  window.saveSign=()=>toast('✅ Sign Saved');
-
-  // ============ SALES PHOTO + MULTI ADD ============
+  // ============ RESTAURANT/BAR ============
   function loadPhoto(e){const f=e.target.files[0];if(f){const r=new FileReader();r.onload=ev=>tempPhoto=ev.target.result;r.readAsDataURL(f);}}
-  window.addPart=async()=>{const make=document.getElementById('partMake').value;const name=document.getElementById('partName').value;const desc=document.getElementById('partDesc').value;const cat=document.getElementById('partCat').value;const qty=+document.getElementById('partQty').value;const price=+document.getElementById('partPrice').value;const markup=+document.getElementById('partMarkup').value||35;if(name&&price){parts.push({id:Date.now(),make,name,desc,cat,qty,price,markup,img:tempPhoto});await saveAll();renderParts();clearPartForm();toast('✅ Part');}};
-  window.addAnother=()=>{addPart();tempPhoto='';document.getElementById('partPhoto').value='';}
-  function clearPartForm(){['partMake','partName','partDesc','partQty','partPrice'].forEach(i=>document.getElementById(i).value='');}
-  window.delPart=async(id)=>{parts=parts.filter(p=>p.id!=id);await saveAll();renderParts();};
-  window.renderParts=()=>{document.getElementById('parts').innerHTML=parts.map(p=>`<div class="row"><img class="part-img" src="${p.img||'https://via.placeholder.com/60'}"><span><b>${p.make} ${p.name}</b><br><span style="font-size:12px">${p.cat} | ${p.desc}</span></span><span>R${Math.round(p.price*(1+p.markup/100))}</span><button class="danger" onclick="delPart(${p.id})">Del</button></div>`).join('')||'<div class="row"><span>No parts</span></div>';};
-  window.payFast=()=>{const total=parts.reduce((a,p)=>a+p.price*(1+p.markup/100)*p.qty,0);window.open(`https://sandbox.payfast.co.za/eng/process?amount=${total}&item_name=Twins`,'_blank');toast('💳 PayFast');}
-
-  // ============ RECEPTION + PDF INVOICE ============
-  window.newBooking=async()=>{const n=document.getElementById('custName').value;const ph=document.getElementById('custPhone').value;const em=document.getElementById('custEmail').value;if(n&&ph){bookings.push({id:Date.now(),name:n,phone:ph,email:em});document.getElementById('custName').value='';document.getElementById('custPhone').value='';document.getElementById('custEmail').value='';await saveAll();renderBookings();window.open(`https://wa.me/${ph}?text=Hi ${n}, Portal: ${location.href}`,'_blank');toast('✅ WA');}};
-  window.renderBookings=()=>{document.getElementById('bookings').innerHTML=bookings.map(b=>`<div class="row"><span>${b.name}</span><span>${b.phone}</span></div>`).join('')||'<div class="row"><span>No bookings</span></div>';};
-  window.copyPortal=()=>{navigator.clipboard.writeText(location.href);toast('📋 Copied');}
-  
-  window.makeInvoicePDF=()=>{
-    const b=bookings[bookings.length-1]||{name:'Walk-in Customer',phone:'',email:''};
-    const partsHTML=parts.map(p=>`<tr><td>${p.make} ${p.name}</td><td>${p.qty}</td><td>R${p.price}</td><td>R${Math.round(p.price*(1+p.markup/100)*p.qty)}</td></tr>`).join('');
-    const labour=jobCart.reduce((a,i)=>a+i.hours,0)*1500;
-    const partsTotal=parts.reduce((a,p)=>a+p.price*(1+p.markup/100)*p.qty,0);
-    const total=labour+partsTotal;
-    const html=`<html><head><style>body{font-family:Arial;padding:40px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #000;padding:8px;text-align:left}h1{color:#7C3AED}</style></head><body>
-    <h1>TWINZ WORKSHOP INVOICE</h1>
-    <p><b>To:</b> ${b.name}<br><b>Phone:</b> ${b.phone}<br><b>Email:</b> ${b.email}<br><b>Date:</b> ${new Date().toLocaleDateString()}</p>
-    <table><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>${partsHTML}<tr><td>Labour ${jobCart.reduce((a,i)=>a+i.hours,0)}h @R1500</td><td></td><td></td><td>R${labour}</td></tr>
-    <tr><td colspan="3"><b>GRAND TOTAL</b></td><td><b>R${total}</b></td></tr></table>
-    <p style="margin-top:40px">Bank: FNB | Account: 123456789 | Thank you CEO</p>
+    window.addMenu=async()=>{const item=document.getElementById('menuItem').value;const price=+document.getElementById('menuPrice').value;const desc=document.getElementById('menuDesc').value;if(item&&price){menu.push({id:Date.now(),item,price,desc,img:tempPhoto});await saveAll();renderMenu();clearMenuForm();toast('✅ Menu Item');}};
+  window.addAnotherMenu=()=>{addMenu();tempPhoto='';document.getElementById('menuPhoto').value='';}
+  function clearMenuForm(){['menuItem','menuPrice','menuDesc'].forEach(i=>document.getElementById(i).value='');}
+  window.delMenu=async(id)=>{menu=menu.filter(m=>m.id!=id);await saveAll();renderMenu();};
+  window.renderMenu=()=>{document.getElementById('menuList').innerHTML=menu.map(m=>`<div class="row"><img class="img-thumb" src="${m.img||'https://via.placeholder.com/60'}"><span><b>${m.item}</b><br><span style="font-size:12px">${m.desc}</span></span><span>R${m.price}</span><button class="danger" onclick="delMenu(${m.id})">Del</button></div>`).join('')||'<div class="row"><span>No menu yet</span></div>';};
+  window.makeBillPDF=()=>{
+    const total=menu.reduce((a,m)=>a+m.price,0);
+    const html=`<html><head><style>body{font-family:Arial;padding:40px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #000;padding:8px}h1{color:#16A34A}</style></head><body>
+    <h1>GREEN HOUSE SHIBISHANE BILL</h1>
+    <table><tr><th>Item</th><th>Price</th></tr>${menu.map(m=>`<tr><td>${m.item}</td><td>R${m.price}</td></tr>`).join('')}<tr><td><b>Total</b></td><td><b>R${total}</b></td></tr></table>
+    <p style="margin-top:40px">Thank you for visiting Shibishane 🌿</p>
     </body></html>`;
     const w=window.open('');w.document.write(html);w.print();
   }
-  
-  window.exportPDF=()=>makeInvoicePDF();
 
-  function renderAll(){renderParts();renderBookings();}
+  // ============ TECHNICIAN ============
+  window.addIssue=async()=>{const issue=document.getElementById('issue').value;if(issue){issues.push({id:Date.now(),issue,status:'Open'});document.getElementById('issue').value='';await saveAll();renderIssues();toast('✅ Issue Logged');}};
+  window.renderIssues=()=>{document.getElementById('issues').innerHTML=issues.map(i=>`<div class="row"><span>${i.issue}</span><span>${i.status}</span></div>`).join('')||'<div class="row"><span>No issues</span></div>';};
+  window.addToCart=()=>{const h=parseFloat(document.getElementById('jobHours').value)||0;jobCart.push({id:Date.now(),hours:h});renderCart();}
+  function renderCart(){const total=jobCart.reduce((a,i)=>a+i.hours,0);document.getElementById('jobCart').innerHTML=`${jobCart.map(i=>`<div class="row"><span>Task</span><span>${i.hours}h</span></div>`).join('')}<div class="row"><b>Total</b><b>${total}h</b></div>`;}
+
+  // ============ RECEPTION ============
+  window.newBooking=async()=>{const n=document.getElementById('guestName').value;const ph=document.getElementById('guestPhone').value;const t=document.getElementById('guestType').value;if(n&&ph){bookings.push({id:Date.now(),name:n,phone:ph,type:t});document.getElementById('guestName').value='';document.getElementById('guestPhone').value='';await saveAll();renderBookings();window.open(`https://wa.me/${ph}?text=Welcome to Shibishane ${n}, ${t} booked.`,'_blank');toast('✅ WA Sent');}};
+  window.renderBookings=()=>{document.getElementById('bookings').innerHTML=bookings.map(b=>`<div class="row"><span>${b.name} - ${b.type}</span><span>${b.phone}</span></div>`).join('')||'<div class="row"><span>No bookings</span></div>';};
+  window.copyPortal=()=>{navigator.clipboard.writeText(location.href);toast('📋 Portal Copied');}
+
+  // ============ MAINTENANCE ============
+  window.addMaint=async()=>{const task=document.getElementById('maintTask').value;if(task){maint.push({id:Date.now(),task,status:'Pending'});document.getElementById('maintTask').value='';await saveAll();renderMaint();toast('✅ Task Added');}};
+  window.renderMaint=()=>{document.getElementById('maintList').innerHTML=maint.map(m=>`<div class="row"><span>${m.task}</span><span>${m.status}</span></div>`).join('')||'<div class="row"><span>No tasks</span></div>';};
+
+  // ============ DJ ============
+  window.addSong=async()=>{const song=document.getElementById('djSong').value;if(song){djQueue.push({id:Date.now(),song});document.getElementById('djSong').value='';await saveAll();renderDJ();toast('🎧 Added');}};
+  window.renderDJ=()=>{document.getElementById('djQueue').innerHTML=djQueue.map(s=>`<div class="row"><span>${s.song}</span></div>`).join('')||'<div class="row"><span>Queue empty</span></div>';};
+
+  // ============ POOL ============
+  window.poolCheckin=async()=>{const name=document.getElementById('poolGuest').value;if(name){pool.push({id:Date.now(),name,time:new Date().toLocaleTimeString()});document.getElementById('poolGuest').value='';await saveAll();renderPool();toast('🏊 Checked In');}};
+  window.renderPool=()=>{document.getElementById('poolList').innerHTML=pool.map(p=>`<div class="row"><span>${p.name}</span><span>${p.time}</span></div>`).join('')||'<div class="row"><span>No guests</span></div>';};
+
+  // ============ GUEST HOUSES ============
+  window.bookRoom=async()=>{const room=document.getElementById('roomNo').value;const guest=document.getElementById('roomGuest').value;if(room&&guest){rooms.push({id:Date.now(),room,guest});document.getElementById('roomNo').value='';document.getElementById('roomGuest').value='';await saveAll();renderRooms();toast('🏠 Room Booked');}};
+  window.renderRooms=()=>{document.getElementById('rooms').innerHTML=rooms.map(r=>`<div class="row"><span>Room ${r.room}</span><span>${r.guest}</span></div>`).join('')||'<div class="row"><span>No bookings</span></div>';};
+
+  // ============ CAR WASH ============
+  window.addWash=async()=>{const reg=document.getElementById('carReg').value;const type=document.getElementById('washType').value;if(reg){const price=type.includes('50')?50:type.includes('120')?120:200;washes.push({id:Date.now(),reg,type,price});document.getElementById('carReg').value='';await saveAll();renderWash();renderKPI();toast('🚿 Wash Added');}};
+  window.renderWash=()=>{document.getElementById('washList').innerHTML=washes.map(w=>`<div class="row"><span>${w.reg}</span><span>${w.type} R${w.price}</span></div>`).join('')||'<div class="row"><span>No washes</span></div>';};
+
+  // ============ CLUB ============
+  window.clubEntry=async()=>{const name=document.getElementById('clubGuest').value;if(name){club.push({id:Date.now(),name,time:new Date().toLocaleTimeString()});document.getElementById('clubGuest').value='';await saveAll();renderClub();renderKPI();toast('🌙 Entry R50');}};
+  window.renderClub=()=>{document.getElementById('clubList').innerHTML=club.map(c=>`<div class="row"><span>${c.name}</span><span>${c.time}</span></div>`).join('')||'<div class="row"><span>No entries</span></div>';};
+
+  // ============ EXPORT + RENDER ALL ============
+  window.exportPDF=()=>{
+    const total=washes.reduce((a,w)=>a+w.price,0)+club.length*50;
+    const html=`<html><head><style>body{font-family:Arial;padding:40px}h1{color:#16A34A}</style></head><body>
+    <h1>SHIBISHANE DAILY REPORT</h1>
+    <p><b>Tasks:</b> ${tasks.length} | <b>Guests:</b> ${bookings.length} | <b>Washes:</b> ${washes.length} | <b>Club:</b> ${club.length}</p>
+    <p><b>Total Revenue:</b> R${total}</p>
+    </body></html>`;
+    const w=window.open('');w.document.write(html);w.print();
+  }
+  function renderAll(){renderMenu();renderIssues();renderBookings();renderMaint();renderDJ();renderPool();renderRooms();renderWash();renderClub();}
+
+  // ============ PWA INSTALL ============
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register(URL.createObjectURL(new Blob([`
+      self.addEventListener('install',e=>e.waitUntil(self.skipWaiting()));
+      self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+      self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+    `],{type:'text/javascript'})));
+  }
+
   function toast(m){const t=document.createElement('div');t.className='toast';t.innerText=m;document.getElementById('toastHost').appendChild(t);setTimeout(()=>t.remove(),2500);}
-</script>
+
+  </script>
 </body>
 </html>
