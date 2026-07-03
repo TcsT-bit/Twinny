@@ -10,30 +10,31 @@
   *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Arial;transition:.2s;-webkit-tap-highlight-color:transparent}
   body{margin:0;color:var(--text);background:radial-gradient(1200px 800px at 20% -10%, #1e1b4b, transparent),var(--bg);padding-bottom:80px}
 .wrap{max-width:1200px;margin:0 auto;padding:16px}
-.card{background:var(--card);border:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-  h1{margin:0 0 8px;font-size:22px;font-weight:800} h2{margin:0 0 10px;font-size:16px;color:var(--muted);font-weight:600}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  h1{margin:0 0 8px;font-size:22px;font-weight:800} h2{margin:0 0 10px;font-size:16px;color:var(--muted)}
   input,button,select,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.3);color:var(--text);margin:6px 0;font-size:16px;min-height:48px}
-  button{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:800;cursor:pointer;border:0}
+  button{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:800;border:0}
   button:active{transform:scale(.97)}
   button.danger{background:linear-gradient(90deg,var(--danger),#ff2e55)}
   button.ghost{background:transparent;border:1px solid rgba(255,255,255,.2)}
   button.warn{background:linear-gradient(90deg,var(--warn),#ff9d00);color:#000}
+  button.success{background:linear-gradient(90deg,#10b981,#34d399)}
 .row{display:flex;gap:10px;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);padding:12px 0;flex-wrap:wrap}
 .grid{display:grid;gap:12px}
 .grid.cols-2{grid-template-columns:1fr 1fr}
 .grid.cols-4{grid-template-columns:repeat(2,1fr)} @media(min-width:768px){.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
-.pill{font-size:12px;padding:6px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:var(--muted)}
+.pill{font-size:12px;padding:6px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px}
 .hide{display:none}
 .logo{font-weight:900;font-size:16px;background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .kpi{padding:16px;border-radius:16px;background:rgba(255,255,255,.03);text-align:center}
 .kpi h3{margin:0;font-size:11px;color:var(--muted);text-transform:uppercase}
 .kpi.val{font-size:26px;font-weight:900;margin:6px 0}
 .kanban{display:grid;grid-template-columns:1fr;gap:10px} @media(min-width:900px){.kanban{grid-template-columns:repeat(5,1fr)}}
-.col{background:rgba(0,0,0,.3);border-radius:14px;padding:10px;min-height:120px}
+.col{background:rgba(0,0,0,.3);border-radius:14px;padding:10px}
 .card-job{background:rgba(255,255,255,.05);border-radius:10px;padding:10px;margin:6px 0}
 canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000;width:100%;height:100px}
-.tabs{display:flex;gap:6px;overflow:auto;padding:4px 0;margin:8px 0}
-.tab{flex:0 0 auto;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.05);font-size:14px;white-space:nowrap}
+.tabs{display:flex;gap:6px;overflow:auto}
+.tab{flex:0 0 auto;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.05);white-space:nowrap}
 .tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#000;font-weight:800}
 .bottomNav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid rgba(255,255,255,.1);backdrop-filter:var(--glass);display:flex;justify-content:space-around;padding:8px 0;z-index:999}
 .navBtn{flex:1;text-align:center;font-size:11px;color:var(--muted)}
@@ -42,13 +43,15 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
 .chat{height:200px;overflow:auto;background:rgba(0,0,0,.3);border-radius:12px;padding:10px}
 .msg{margin:6px 0;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.05)}
 .msg.ai{background:rgba(124,58,237,.15)}
+.part-img{width:60px;height:60px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.2)}
+.clockBtn{font-size:14px;padding:12px;border-radius:12px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center">
-      <div class="logo">🧬 TWINZ V4.1 HEAVEN</div>
+      <div class="logo">🧬 TWINZ V4.2 HEAVEN PRO</div>
       <div class="pill" id="lockStatus">LOCKED</div>
     </div>
   </div>
@@ -76,34 +79,34 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
       <button onclick="enter()">Enter →</button>
     </div>
 
-    <!-- CEO ALL ACCESS -->
+    <!-- CEO ALL ACCESS + HOURS -->
     <div id="CEO" class="hide">
       <div class="card">
         <h1>CEO Command <span class="pill">All Modules</span></h1>
-        <div class="tabs" id="ceoTabs">
-          <div class="tab active" onclick="showCeoTab('kpi')">KPI</div>
-          <div class="tab" onclick="showCeoTab('tech')">Technician</div>
-          <div class="tab" onclick="showCeoTab('sales')">Sales</div>
-          <div class="tab" onclick="showCeoTab('rec')">Reception</div>
+        <div class="grid cols-4" id="kpiBoard"></div>
+        <h2>⏱️ My Hours</h2>
+        <div class="grid cols-3">
+          <button id="clockBtn" class="clockBtn success" onclick="toggleClock()">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsToday">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeek">0h</div></div>
         </div>
-        <div id="ceo_kpi">
-          <div class="grid cols-4" id="kpiBoard"></div>
-          <h2>Job Pipeline</h2>
-          <div class="kanban" id="kanban"></div>
-          <button onclick="addJob()">+ New Job</button>
-          <button onclick="exportPDF()">Export PDF</button>
-        </div>
-        <div id="ceo_tech" class="hide"></div>
-        <div id="ceo_sales" class="hide"></div>
-        <div id="ceo_rec" class="hide"></div>
+        <h2>Job Pipeline</h2>
+        <div class="kanban" id="kanban"></div>
+        <button onclick="addJob()">+ New Job</button>
+        <button onclick="exportPDF()">Export PDF</button>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- TECHNICIAN ADVANCED -->
+    <!-- TECHNICIAN ADVANCED + HOURS -->
     <div id="TECHNICIAN" class="hide">
       <div class="card">
         <h1>🔧 Technician Pro</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnTech" class="clockBtn success" onclick="toggleClock('TECHNICIAN')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayTech">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekTech">0h</div></div>
+        </div>
         <div class="grid cols-2">
           <input id="vin" placeholder="VIN" value="SALWA2TF0HA123456">
           <button onclick="decodeVIN()">Decode</button>
@@ -119,18 +122,19 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
         <h2>E-Sign</h2>
         <canvas id="sign"></canvas>
         <div class="grid cols-2"><button onclick="clearSign()">Clear</button><button onclick="saveSign()">Save</button></div>
-        <h2>AI Copilot</h2>
-        <div class="chat" id="chat"></div>
-        <input id="aiQ" placeholder="Ask P0300?">
-        <button onclick="askAI()">Ask AI</button>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- SALES ADVANCED -->
+    <!-- SALES ADVANCED + PHOTO + HOURS -->
     <div id="SALES" class="hide">
       <div class="card">
         <h1>💰 Sales Pro</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnSales" class="clockBtn success" onclick="toggleClock('SALES')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodaySales">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekSales">0h</div></div>
+        </div>
         <input id="partMake" placeholder="Car Make: JLR, BMW, VW">
         <input id="partName" placeholder="Part Name: Oil Filter">
         <textarea id="partDesc" placeholder="Description: OE Spec, 5.0 V8"></textarea>
@@ -140,20 +144,31 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
           <input id="partPrice" type="number" placeholder="Cost R">
         </div>
         <input id="partMarkup" type="number" placeholder="Markup % 35" value="35">
-        <button onclick="addPart()">+ Add Part</button>
+        <input id="partPhoto" type="file" accept="image/*" onchange="loadPhoto(event)">
+        <div class="grid cols-2">
+          <button onclick="addPart()">+ Add Part</button>
+          <button class="ghost" onclick="addAnother()">+ Add Another</button>
+        </div>
         <div id="parts"></div>
         <button class="warn" onclick="payFast()">PayFast Link</button>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
       </div>
     </div>
 
-    <!-- RECEPTION -->
+    <!-- RECEPTION + PDF INVOICE + HOURS -->
     <div id="RECEPTION" class="hide">
       <div class="card">
         <h1>📞 Reception</h1>
+        <div class="grid cols-3">
+          <button id="clockBtnRec" class="clockBtn success" onclick="toggleClock('RECEPTION')">Clock In</button>
+          <div class="kpi"><h3>Today</h3><div class="val" id="hrsTodayRec">0h</div></div>
+          <div class="kpi"><h3>Week</h3><div class="val" id="hrsWeekRec">0h</div></div>
+        </div>
         <input id="custName" placeholder="Customer Name">
         <input id="custPhone" placeholder="WhatsApp +27">
+        <input id="custEmail" placeholder="Email for Invoice">
         <button onclick="newBooking()">Create + WhatsApp</button>
+        <button class="warn" onclick="makeInvoicePDF()">Generate PDF Invoice</button>
         <div id="bookings"></div>
         <button class="ghost" onclick="copyPortal()">Copy Portal Link</button>
         <button class="danger" onclick="lockApp()">🔒 Lock</button>
@@ -183,17 +198,27 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
   function resetIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(lockApp,5*60*1000);}
   ['click','keydown','touchstart'].forEach(e=>document.addEventListener(e,resetIdle));
 
-  // ============ DATA ============
-  let users=[],parts=[],bookings=[],jobs=[],jobCart=[],EVOLVE_MEMORY={};
-  async function initData(){users=await DB.get('users');if(!users.length)users=[{id:1,email:'tech1@twinz.com'}];parts=await DB.get('parts');if(!parts.length)parts=[{id:1,make:'JLR',name:'Oil Filter',desc:'OE',cat:'Engine',qty:10,price:450,markup:35}];bookings=await DB.get('bookings');jobs=await DB.get('jobs');if(!jobs.length)jobs=[{id:1,car:'Range Rover',status:'Done',time:2.5},{id:2,car:'Defender',status:'In Progress',time:3.2}];EVOLVE_MEMORY=await DB.get('evolve_memory')||{};renderAll();renderKPI();renderKanban();}
-  async function saveAll(){await DB.set('users',users);await DB.set('parts',parts);await DB.set('bookings',bookings);await DB.set('jobs',jobs);await DB.set('evolve_memory',EVOLVE_MEMORY);}
+  // ============ DATA + HOURS ============
+  let users=[],parts=[],bookings=[],jobs=[],jobCart=[],EVOLVE_MEMORY={},timeLogs=[];
+  let tempPhoto=''; // base64
+  async function initData(){users=await DB.get('users');if(!users.length)users=[{id:1,email:'ceo@twinz.com'}];parts=await DB.get('parts');if(!parts.length)parts=[{id:1,make:'JLR',name:'Oil Filter',desc:'OE',cat:'Engine',qty:10,price:450,markup:35,img:''}];bookings=await DB.get('bookings');jobs=await DB.get('jobs');if(!jobs.length)jobs=[{id:1,car:'Range Rover',status:'Done',time:2.5}];EVOLVE_MEMORY=await DB.get('evolve_memory')||{};timeLogs=await DB.get('timelogs')||[];renderAll();renderKPI();renderKanban();renderHoursAll();}
+  async function saveAll(){await DB.set('users',users);await DB.set('parts',parts);await DB.set('bookings',bookings);await DB.set('jobs',jobs);await DB.set('evolve_memory',EVOLVE_MEMORY);await DB.set('timelogs',timeLogs);}
 
-  window.enter=()=>{const r=document.getElementById('role').value;document.getElementById('login').classList.add('hide');document.getElementById(r).classList.remove('hide');document.querySelectorAll('.navBtn').forEach((b,i)=>b.classList.toggle('active',i==['CEO','TECHNICIAN','SALES','RECEPTION'].indexOf(r)));if(r==='CEO')loadCeoAll();}
+  window.enter=()=>{const r=document.getElementById('role').value;document.getElementById('login').classList.add('hide');document.getElementById(r).classList.remove('hide');document.querySelectorAll('.navBtn').forEach((b,i)=>b.classList.toggle('active',i==['CEO','TECHNICIAN','SALES','RECEPTION'].indexOf(r)));renderHours(r);}
 
-  // ============ CEO ALL ACCESS ============
-  function showCeoTab(t){document.querySelectorAll('#ceoTabs .tab').forEach(x=>x.classList.remove('active'));event.target.classList.add('active');['kpi','tech','sales','rec'].forEach(x=>document.getElementById('ceo_'+x).classList.toggle('hide',x!=t));}
-  async function loadCeoAll(){renderKPI();renderKanban();document.getElementById('ceo_tech').innerHTML=document.getElementById('TECHNICIAN').innerHTML;document.getElementById('ceo_sales').innerHTML=document.getElementById('SALES').innerHTML;document.getElementById('ceo_rec').innerHTML=document.getElementById('RECEPTION').innerHTML;}
-  window.switchRole=(r)=>{document.querySelectorAll('#CEO,#TECHNICIAN,#SALES,#RECEPTION').forEach(e=>e.classList.add('hide'));document.getElementById(r).classList.remove('hide');document.querySelectorAll('.navBtn').forEach(b=>b.classList.toggle('active',b.innerText.toLowerCase().includes(r.toLowerCase().slice(0,3))));if(r==='CEO')loadCeoAll();}
+  // ============ WORKING HOURS SYSTEM ============
+  function renderHours(role){const logs=timeLogs.filter(t=>t.role==role);const now=Date.now();const today=logs.filter(t=>new Date(t.in).toDateString()==new Date().toDateString());const week=logs.filter(t=>new Date(t.in)>new Date(now-7*24*3600*1000));
+    const sum=arr=>arr.reduce((a,t)=>a+((t.out||now)-t.in)/3600000,0).toFixed(1);
+    if(role=='CEO'){document.getElementById('hrsToday').innerText=sum(today)+'h';document.getElementById('hrsWeek').innerText=sum(week)+'h';}
+    if(role=='TECHNICIAN'){document.getElementById('hrsTodayTech').innerText=sum(today)+'h';document.getElementById('hrsWeekTech').innerText=sum(week)+'h';}
+    if(role=='SALES'){document.getElementById('hrsTodaySales').innerText=sum(today)+'h';document.getElementById('hrsWeekSales').innerText=sum(week)+'h';}
+    if(role=='RECEPTION'){document.getElementById('hrsTodayRec').innerText=sum(today)+'h';document.getElementById('hrsWeekRec').innerText=sum(week)+'h';}
+    const active=timeLogs.find(t=>t.role==role&&!t.out);
+    const btn=document.getElementById('clockBtn'+(role=='TECHNICIAN'?'Tech':role=='SALES'?'Sales':role=='RECEPTION'?'Rec':''));
+    if(btn){btn.innerText=active?'Clock Out':'Clock In';btn.className='clockBtn '+(active?'danger':'success');}
+  }
+  function renderHoursAll(){['CEO','TECHNICIAN','SALES','RECEPTION'].forEach(renderHours);}
+  window.toggleClock=async(role=document.getElementById('role').value)=>{const active=timeLogs.find(t=>t.role==role&&!t.out);if(active){active.out=Date.now();}else{timeLogs.push({id:Date.now(),role,in:Date.now(),out:null});}await saveAll();renderHours(role);toast(active?'⏱️ Clocked Out':'⏱️ Clocked In');}
 
   // ============ KPI + KANBAN ============
   function renderKPI(){const rev=jobs.reduce((a,j)=>a+(j.status=='Done'?j.time*1500:0),0);const avg=(jobs.reduce((a,j)=>a+j.time,0)/jobs.length||0).toFixed(1);const done=jobs.filter(j=>j.status=='Done').length;const eff=Math.max(0,100-(avg*10)).toFixed(0);document.getElementById('kpiBoard').innerHTML=`<div class="kpi"><h3>Revenue</h3><div class="val">R${rev}</div></div><div class="kpi"><h3>Done</h3><div class="val">${done}</div></div><div class="kpi"><h3>Avg</h3><div class="val">${avg}h</div></div><div class="kpi"><h3>Eff</h3><div class="val">${eff}%</div></div>`;}
@@ -201,10 +226,10 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
   window.addJob=async()=>{const car=prompt('Car?');if(car){jobs.push({id:Date.now(),car,status:'Waiting',time:0});await saveAll();renderKanban();renderKPI();toast('✅ Job');}}
   window.moveJob=async(id)=>{const j=jobs.find(x=>x.id==id);const f=['Waiting','In Progress','Awaiting Parts','QC','Done'];j.status=f[(f.indexOf(j.status)+1)%5];await saveAll();renderKanban();renderKPI();}
 
-  // ============ TECHNICIAN ADVANCED ============
+  // ============ TECHNICIAN ============
   const VIN_DB={'SALWA2TF0HA123456':{make:'Land Rover',model:'Range Rover V8',year:2017,engine:'5.0 SC'}};
   window.decodeVIN=()=>{const v=document.getElementById('vin').value;const d=VIN_DB[v]||{make:'JLR',model:'Vehicle',year:'N/A'};document.getElementById('vinInfo').innerHTML=`<div class="row"><b>${d.year} ${d.make} ${d.model}</b><span>${d.engine||''}</span></div>`;}
-  window.scan=async()=>{const code='P0300';const data={code,desc:'Misfire',freeze:{rpm:780,temp:92,load:18}};document.getElementById('dtc').innerHTML=`<div class="row"><span><b>${code}</b> ${data.desc}</span><span>RPM:${data.freeze.rpm} Temp:${data.freeze.temp}°C</span></div>`;EVOLVE_MEMORY[code]={fix:'Coils+Plugs',count:(EVOLVE_MEMORY[code]?.count||0)+1};await saveAll();addMsg('ai',`Learned ${code} x${EVOLVE_MEMORY[code].count}`);}
+  window.scan=async()=>{const code='P0300';const data={code,desc:'Misfire',freeze:{rpm:780,temp:92,load:18}};document.getElementById('dtc').innerHTML=`<div class="row"><span><b>${code}</b> ${data.desc}</span><span>RPM:${data.freeze.rpm} Temp:${data.freeze.temp}°C</span></div>`;EVOLVE_MEMORY[code]={fix:'Coils+Plugs',count:(EVOLVE_MEMORY[code]?.count||0)+1};await saveAll();}
   window.addToCart=()=>{const h=parseFloat(document.getElementById('jobHours').value)||0;jobCart.push({id:Date.now(),hours:h});renderCart();}
   function renderCart(){const total=jobCart.reduce((a,i)=>a+i.hours,0);document.getElementById('jobCart').innerHTML=`${jobCart.map(i=>`<div class="row"><span>Task</span><span>${i.hours}h</span></div>`).join('')}<div class="row"><b>Total</b><b>${total}h</b></div>`;}
   const c=document.getElementById('sign'),ctx=c.getContext('2d');let drawing=false;c.width=600;c.height=100;c.onpointerdown=e=>{drawing=true;ctx.moveTo(e.offsetX,e.offsetY);}
@@ -212,21 +237,38 @@ canvas{border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:#000
   c.onpointerup=()=>drawing=false;
   window.clearSign=()=>ctx.clearRect(0,0,c.width,c.height);
   window.saveSign=()=>toast('✅ Sign Saved');
-  const AI_KB={'p0300':'Misfire JLR V8: Swap coils 1<->5, check plugs.'};
-  function addMsg(w,t){document.getElementById('chat').innerHTML+=`<div class="msg ${w}"><b>${w=='ai'?'AI:':'You:'}</b> ${t}</div>`;document.getElementById('chat').scrollTop=9999;}
-  window.askAI=()=>{const q=document.getElementById('aiQ').value.toLowerCase();document.getElementById('aiQ').value='';addMsg('you',q);addMsg('ai',AI_KB[q]||'Check guide.');}
 
-  // ============ SALES ADVANCED ============
-  window.addPart=async()=>{const make=document.getElementById('partMake').value;const name=document.getElementById('partName').value;const desc=document.getElementById('partDesc').value;const cat=document.getElementById('partCat').value;const qty=+document.getElementById('partQty').value;const price=+document.getElementById('partPrice').value;const markup=+document.getElementById('partMarkup').value||35;if(name&&price){parts.push({id:Date.now(),make,name,desc,cat,qty,price,markup});await saveAll();renderParts();['partMake','partName','partDesc','partQty','partPrice'].forEach(i=>document.getElementById(i).value='');toast('✅ Part');}};
+  // ============ SALES PHOTO + MULTI ADD ============
+  function loadPhoto(e){const f=e.target.files[0];if(f){const r=new FileReader();r.onload=ev=>tempPhoto=ev.target.result;r.readAsDataURL(f);}}
+  window.addPart=async()=>{const make=document.getElementById('partMake').value;const name=document.getElementById('partName').value;const desc=document.getElementById('partDesc').value;const cat=document.getElementById('partCat').value;const qty=+document.getElementById('partQty').value;const price=+document.getElementById('partPrice').value;const markup=+document.getElementById('partMarkup').value||35;if(name&&price){parts.push({id:Date.now(),make,name,desc,cat,qty,price,markup,img:tempPhoto});await saveAll();renderParts();clearPartForm();toast('✅ Part');}};
+  window.addAnother=()=>{addPart();tempPhoto='';document.getElementById('partPhoto').value='';}
+  function clearPartForm(){['partMake','partName','partDesc','partQty','partPrice'].forEach(i=>document.getElementById(i).value='');}
   window.delPart=async(id)=>{parts=parts.filter(p=>p.id!=id);await saveAll();renderParts();};
-  window.renderParts=()=>{document.getElementById('parts').innerHTML=parts.map(p=>`<div class="row"><span><b>${p.make} ${p.name}</b><br><span style="font-size:12px">${p.cat} | ${p.desc}</span></span><span>R${Math.round(p.price*(1+p.markup/100))}</span><button class="danger" onclick="delPart(${p.id})">Del</button></div>`).join('')||'<div class="row"><span>No parts</span></div>';};
+  window.renderParts=()=>{document.getElementById('parts').innerHTML=parts.map(p=>`<div class="row"><img class="part-img" src="${p.img||'https://via.placeholder.com/60'}"><span><b>${p.make} ${p.name}</b><br><span style="font-size:12px">${p.cat} | ${p.desc}</span></span><span>R${Math.round(p.price*(1+p.markup/100))}</span><button class="danger" onclick="delPart(${p.id})">Del</button></div>`).join('')||'<div class="row"><span>No parts</span></div>';};
   window.payFast=()=>{const total=parts.reduce((a,p)=>a+p.price*(1+p.markup/100)*p.qty,0);window.open(`https://sandbox.payfast.co.za/eng/process?amount=${total}&item_name=Twins`,'_blank');toast('💳 PayFast');}
 
-  // ============ RECEPTION ============
-  window.newBooking=async()=>{const n=document.getElementById('custName').value;const ph=document.getElementById('custPhone').value;if(n&&ph){bookings.push({id:Date.now(),name:n,phone:ph});document.getElementById('custName').value='';document.getElementById('custPhone').value='';await saveAll();renderBookings();window.open(`https://wa.me/${ph}?text=Hi ${n}, Portal: ${location.href}`,'_blank');toast('✅ WA');}};
+  // ============ RECEPTION + PDF INVOICE ============
+  window.newBooking=async()=>{const n=document.getElementById('custName').value;const ph=document.getElementById('custPhone').value;const em=document.getElementById('custEmail').value;if(n&&ph){bookings.push({id:Date.now(),name:n,phone:ph,email:em});document.getElementById('custName').value='';document.getElementById('custPhone').value='';document.getElementById('custEmail').value='';await saveAll();renderBookings();window.open(`https://wa.me/${ph}?text=Hi ${n}, Portal: ${location.href}`,'_blank');toast('✅ WA');}};
   window.renderBookings=()=>{document.getElementById('bookings').innerHTML=bookings.map(b=>`<div class="row"><span>${b.name}</span><span>${b.phone}</span></div>`).join('')||'<div class="row"><span>No bookings</span></div>';};
   window.copyPortal=()=>{navigator.clipboard.writeText(location.href);toast('📋 Copied');}
-  window.exportPDF=()=>{const w=window.open('');w.document.write(`<h1>Invoice</h1><p>R${jobs.reduce((a,j)=>a+(j.status=='Done'?j.time*1500:0),0)}</p>`);w.print();}
+  
+  window.makeInvoicePDF=()=>{
+    const b=bookings[bookings.length-1]||{name:'Walk-in Customer',phone:'',email:''};
+    const partsHTML=parts.map(p=>`<tr><td>${p.make} ${p.name}</td><td>${p.qty}</td><td>R${p.price}</td><td>R${Math.round(p.price*(1+p.markup/100)*p.qty)}</td></tr>`).join('');
+    const labour=jobCart.reduce((a,i)=>a+i.hours,0)*1500;
+    const partsTotal=parts.reduce((a,p)=>a+p.price*(1+p.markup/100)*p.qty,0);
+    const total=labour+partsTotal;
+    const html=`<html><head><style>body{font-family:Arial;padding:40px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #000;padding:8px;text-align:left}h1{color:#7C3AED}</style></head><body>
+    <h1>TWINZ WORKSHOP INVOICE</h1>
+    <p><b>To:</b> ${b.name}<br><b>Phone:</b> ${b.phone}<br><b>Email:</b> ${b.email}<br><b>Date:</b> ${new Date().toLocaleDateString()}</p>
+    <table><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>${partsHTML}<tr><td>Labour ${jobCart.reduce((a,i)=>a+i.hours,0)}h @R1500</td><td></td><td></td><td>R${labour}</td></tr>
+    <tr><td colspan="3"><b>GRAND TOTAL</b></td><td><b>R${total}</b></td></tr></table>
+    <p style="margin-top:40px">Bank: FNB | Account: 123456789 | Thank you CEO</p>
+    </body></html>`;
+    const w=window.open('');w.document.write(html);w.print();
+  }
+  
+  window.exportPDF=()=>makeInvoicePDF();
 
   function renderAll(){renderParts();renderBookings();}
   function toast(m){const t=document.createElement('div');t.className='toast';t.innerText=m;document.getElementById('toastHost').appendChild(t);setTimeout(()=>t.remove(),2500);}
